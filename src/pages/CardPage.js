@@ -70,6 +70,12 @@ const CardPage = () => {
 
   const fetchCardDetails = async () => {
     // 여기에 카드 상세 정보를 가져오는 API 호출을 구현하세요
+    try {
+      const response = await axios.get('localhost:3000/api/columns/4/cards');
+      console.log(response);
+    } catch (error) {
+      console.error('Error fetching data: ', error);
+    }
   };
 
   // 카드 상세 정보를 가져올 때 사용합니다
