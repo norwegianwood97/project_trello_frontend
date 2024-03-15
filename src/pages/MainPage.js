@@ -1,6 +1,6 @@
 import React from 'react';
 
-function MyBoardPage() {
+function MainPage() {
   // 여기에 보드 데이터를 state로 관리할 수 있습니다.
   const boards = [
     {

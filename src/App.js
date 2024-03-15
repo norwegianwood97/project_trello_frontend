@@ -14,8 +14,6 @@ import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 
 function App() {
-  // 함수 처리 부분
-
   // 프론트 요소 배치 부분
   return (
     <Router>

@@ -1,0 +1,83 @@
+/* BoardPage.css */
+.board-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+  }
+  
+  .board-header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .board-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .board-owner {
+    font-size: 16px;
+  }
+  
+  .board-columns {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .column {
+    width: calc(33.333% - 10px);
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-right: 15px;
+  }
+  
+  .column:last-child {
+    margin-right: 0;
+  }
+  
+  .column-title {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+  
+  .cards {
+    margin-bottom: 15px;
+  }
+  
+  .card {
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    margin-bottom: 10px;
+    /* 각 카드의 색상은 이미지 기준으로 조정합니다. */
+  }
+  
+  .add-card-btn, .add-column-btn {
+    background-color: #eee;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .add-card-btn:hover, .add-column-btn:hover {
+    background-color: #ddd;
+  }
+  
+  /* 이곳에 추가적인 스타일을 작성할 수 있습니다. */
+  
+  /* 반응형 레이아웃을 위한 스타일 */
+  @media (max-width: 768px) {
+    .board-columns {
+      flex-direction: column;
+    }
+  
+    .column {
+      width: 100%;
+      margin-bottom: 15px;
+    }
+  }
+  
