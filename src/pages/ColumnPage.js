@@ -1,6 +1,6 @@
 import React from 'react';
 
-function CardDetails() {
+function ColumnPage() {
   // 카드 상세 정보는 상태로부터 가져오거나 props로 전달받을 수 있습니다.
   const cardDetails = {
     title: '카드명',

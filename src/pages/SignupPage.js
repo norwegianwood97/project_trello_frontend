@@ -1,8 +1,8 @@
 // SignupForm.js
 import React, { useState } from 'react';
-import './SignupForm.css';
+import './SignupPage.css';
 
-function SignupForm() {
+function SignupPage() {
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -52,4 +52,4 @@ function SignupForm() {
   );
 }
 
-export default SignupForm;
+export default SignupPage;

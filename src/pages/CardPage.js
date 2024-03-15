@@ -1,9 +1,9 @@
 // CardDetailPage.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './CardDetailPage.css'; // 스타일시트 이름도 변경하세요
+import './CardPage.css'; // 스타일시트 이름도 변경하세요
 
-const CardDetailPage = () => {
+const CardPage = () => {
   // 카드 상세 정보 상태를 관리합니다
   const [cardDetails, setCardDetails] = useState({
     title: '',
