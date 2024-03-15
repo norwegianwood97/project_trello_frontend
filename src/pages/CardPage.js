@@ -27,9 +27,46 @@ const CardPage = () => {
     },
     newComment: '',
     cardStatus: 'COMPLETED',
-    comments: [],
+    comments: [
+      {
+        cardWrtier: '작성자1',
+        content: '댓글 내용1',
+        createdAt: {
+          year: 2024,
+          month: 5,
+          day: 15,
+          hour: 18,
+          minute: 30,
+        },
+      },
+      {
+        cardWrtier: '작성자2',
+        content: '댓글 내용2',
+        createdAt: {
+          year: 2024,
+          month: 5,
+          day: 15,
+          hour: 18,
+          minute: 30,
+        },
+      },
+    ],
     // 여기에 더 필요한 상태를 추가할 수 있습니다
   });
+  const formatCardTime = (startTime) => {
+    const { year, month, day, hour, minute } = startTime;
+    return `${year}년 ${month}월 ${day}일 ${hour}시 ${minute}분`;
+  };
+  const formatCardState = (cardStatus) => {
+    if (cardStatus === 'COMPLETED') {
+      return '완료';
+    } else if (cardStatus === 'IN_PROGRESS') {
+      return '진행중';
+    } else if (cardStatus === 'CANCELED') {
+      return '취소됨';
+    }
+    return '해당 없음';
+  };
 
   const fetchCardDetails = async () => {
     // 여기에 카드 상세 정보를 가져오는 API 호출을 구현하세요
@@ -55,6 +92,12 @@ const CardPage = () => {
         <h1>{cardDetails.cardTitle}</h1>
         {/* 카드의 상세 정보를 렌더링하는 부분 */}
       </div>
+      <h1>{cardDetails.cardTitle}</h1>
+      {/* 기존 렌더링 코드에 이어서 아래 코드를 추가합니다 */}
+      <p>시작 시간: {formatCardTime(cardDetails.cardStartTime)}</p>
+      <p>종료 시간: {formatCardTime(cardDetails.cardEndTime)}</p>
+      <p>카드 상태: {formatCardState(cardDetails.cardStatus)}</p>
+
       <div className="card-content">{cardDetails.cardContent}</div>
       <div className="card-comment-section">
         <textarea placeholder="댓글을 입력하세요" value={cardDetails.newComment} onChange={handleCommentChange} />
@@ -64,11 +107,10 @@ const CardPage = () => {
         {/* 댓글 목록을 렌더링합니다 */}
         {cardDetails.comments.map((comment) => (
           <div key={comment.id} className="comment">
-            {/* 여기에 댓글 내용을 렌더링 */}
+            {comment.cardWrtier} :{comment.content}
           </div>
         ))}
       </div>
-      <h1>{'여기서 값 확인 ㅋㅋ'}</h1>
     </div>
   );
 };
