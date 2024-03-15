@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from '../api/axios.js';
 
 function BoardPage() {
   // 이 데이터는 실제 API에서 가져오거나 상태 관리 라이브러리를 통해 관리될 수 있습니다.
