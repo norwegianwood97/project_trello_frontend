@@ -1,0 +1,8 @@
+{
+    "printWidth": 200,
+    "singleQuote": true,
+    "trailingComma": "es5",
+    "tapWidth": 2,
+    "semi": true,
+    "arrowParens": "always"
+  }

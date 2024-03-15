@@ -1,6 +1,6 @@
 import React from 'react';
 
-function ProjectBoard() {
+function BoardPage() {
   // 이 데이터는 실제 API에서 가져오거나 상태 관리 라이브러리를 통해 관리될 수 있습니다.
   const columns = [
     { id: 1, title: 'To Do', cards: [{ id: 1, text: '할일명' }] },
