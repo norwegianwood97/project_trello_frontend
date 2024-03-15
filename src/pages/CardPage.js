@@ -1,13 +1,32 @@
 // CardDetailPage.js
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import './CardPage.css'; // 스타일시트 이름도 변경하세요
 
 const CardPage = () => {
   // 카드 상세 정보 상태를 관리합니다
+  const { cardId } = useParams();
+
   const [cardDetails, setCardDetails] = useState({
-    title: '',
-    content: '',
+    cardTitle: '카드 제목1',
+    cardContent: '카드 내용2',
+    cardStartTime: {
+      year: 2024,
+      month: 5,
+      day: 15,
+      hour: 18,
+      minute: 30,
+    },
+    cardEndTime: {
+      year: 2024,
+      month: 8,
+      day: 18,
+      hour: 21,
+      minute: 0,
+    },
+    newComment: '',
+    cardStatus: 'COMPLETED',
     comments: [],
     // 여기에 더 필요한 상태를 추가할 수 있습니다
   });
@@ -33,16 +52,12 @@ const CardPage = () => {
   return (
     <div className="card-detail-container">
       <div className="card-detail-header">
-        <h1>{cardDetails.title}</h1>
+        <h1>{cardDetails.cardTitle}</h1>
         {/* 카드의 상세 정보를 렌더링하는 부분 */}
       </div>
-      <div className="card-content">{cardDetails.content}</div>
+      <div className="card-content">{cardDetails.cardContent}</div>
       <div className="card-comment-section">
-        <textarea
-          placeholder="댓글을 입력하세요"
-          value={cardDetails.newComment}
-          onChange={handleCommentChange}
-        />
+        <textarea placeholder="댓글을 입력하세요" value={cardDetails.newComment} onChange={handleCommentChange} />
         <button onClick={handleCommentSubmit}>댓글 등록</button>
       </div>
       <div className="card-comments">
@@ -53,6 +68,7 @@ const CardPage = () => {
           </div>
         ))}
       </div>
+      <h1>{'여기서 값 확인 ㅋㅋ'}</h1>
     </div>
   );
 };
