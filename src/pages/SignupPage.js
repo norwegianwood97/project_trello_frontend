@@ -1,17 +1,48 @@
-// SignupForm.js
-import React, { useState } from 'react';
-import './SignupPage.css';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import './SignupPage.css'; 
 
 function SignupPage() {
-  const [email, setEmail] = useState('');
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [passwordConfirm, setPasswordConfirm] = useState('');
+  const [email, setEmail] = useState("");
+  const [nickname, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("");
+  const [passwordMatch, setPasswordMatch] = useState(true); // 비밀번호 일치 여부 상태 추가
+  const [showPasswordMessage, setShowPasswordMessage] = useState(false);
+  const navigate = useNavigate(); // useNavigate 훅을 사용하여 navigate 함수를 가져옴
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // 회원가입 로직을 구현하세요. 입력값 검증 및 API 호출 등
-    console.log(email, username, password, passwordConfirm);
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const handlePasswordConfirmChange = (e) => {
+    setPasswordConfirm(e.target.value);
+  };
+
+  useEffect(() => {
+    const confirmPasswordMatch = password === passwordConfirm;
+    setPasswordMatch(confirmPasswordMatch);
+  }, [password, passwordConfirm]);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post("http://localhost:3000/api/sign-up", {
+        email,
+        nickname,
+        password,
+      });
+
+      console.log(response.data); // 서버 응답 확인
+      navigate("/login"); // 메인 페이지로 리다이렉트
+      // 추가적인 작업 수행
+    } catch (error) {
+      console.error("Error while signing up:", error);
+      alert(error);
+      // 에러 처리
+    }
   };
 
   return (
@@ -27,7 +58,7 @@ function SignupPage() {
         />
         <input
           type="text"
-          value={username}
+          value={nickname}
           onChange={(e) => setUsername(e.target.value)}
           placeholder="이름"
           required
@@ -35,17 +66,26 @@ function SignupPage() {
         <input
           type="password"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={handlePasswordChange}
+          onFocus={() => setShowPasswordMessage(true)}
           placeholder="비밀번호"
           required
         />
         <input
           type="password"
           value={passwordConfirm}
-          onChange={(e) => setPasswordConfirm(e.target.value)}
+          onChange={handlePasswordConfirmChange}
+          onFocus={() => setShowPasswordMessage(true)}
           placeholder="비밀번호 확인"
           required
         />
+        {showPasswordMessage && password && passwordConfirm && (
+          <div id="pw_check" style={{ color: passwordMatch ? "green" : "red" }}>
+            {passwordMatch
+              ? "비밀번호가 일치합니다"
+              : "비밀번호가 일치하지 않습니다"}
+          </div>
+        )}
         <button type="submit">회원가입</button>
       </form>
     </div>
