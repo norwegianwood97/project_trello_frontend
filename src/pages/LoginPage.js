@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import axios from '../api/axios.js';
+import { useNavigate } from 'react-router-dom';
 
 function LoginPage() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const navigate = useNavigate(); // useNavigate hook 추가
 
   const handleSubmit = async (event) => {
@@ -15,83 +15,71 @@ function LoginPage() {
       const response = await axios.post('http://localhost:3000/api/login', {
         email,
         password,
-      });
-      console.log(email)
+      }); // withCredentials 옵션을 true로 설정
+
+      console.log(email);
       console.log(password);
       console.log(response.data); // 응답 로그 확인
 
       // 로그인 성공 시 다음 페이지로 이동
-      navigate("/"); // '/main' 페이지로 이동
+      navigate('/'); // '/main' 페이지로 이동
     } catch (error) {
-      console.error("로그인 오류:", error);
-      alert(email,password);
+      console.error('로그인 오류:', error);
+      alert(email, password);
       console.log(email);
-    
     }
   };
 
   return (
     <div
       style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "100vh",
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: '100vh',
       }}
     >
       <div
         style={{
-          width: "400px",
-          padding: "2rem",
-          boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
+          width: '400px',
+          padding: '2rem',
+          boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
         }}
       >
-        <h1 style={{ textAlign: "center" }}>로그인</h1>
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          {" "}
+        <h1 style={{ textAlign: 'center' }}>로그인</h1>
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          {' '}
           {/* 폼 컨테이너 추가 */}
           <form
             onSubmit={handleSubmit}
             style={{
-              display: "flex",
-              flexDirection: "column",
-              border: "none",
-              boxShadow: "none",
-              textAlign: "center",
-              alignItems: "center", // input 요소를 수직 가운데 정렬
+              display: 'flex',
+              flexDirection: 'column',
+              border: 'none',
+              boxShadow: 'none',
+              textAlign: 'center',
+              alignItems: 'center', // input 요소를 수직 가운데 정렬
             }}
           >
-            <input
-              type="text"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="email"
-              style={{ margin: "0.5rem 0", padding: "0.5rem" }}
-            />
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="비밀번호"
-              style={{ margin: "0.5rem 0", padding: "0.5rem" }}
-            />
+            <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="email" style={{ margin: '0.5rem 0', padding: '0.5rem' }} />
+            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="비밀번호" style={{ margin: '0.5rem 0', padding: '0.5rem' }} />
             <button
               type="submit"
               style={{
-                padding: "0.5rem",
-                marginTop: "1rem",
-                backgroundColor: "#B1BDC5",
-                color: "white",
-                transition: "background-color 0.3s", // 배경색 변경 시 부드러운 전환 효과를 추가
-                border: "none",
-                borderRadius: "5px",
-                cursor: "pointer",
+                padding: '0.5rem',
+                marginTop: '1rem',
+                backgroundColor: '#B1BDC5',
+                color: 'white',
+                transition: 'background-color 0.3s', // 배경색 변경 시 부드러운 전환 효과를 추가
+                border: 'none',
+                borderRadius: '5px',
+                cursor: 'pointer',
               }}
               onMouseEnter={(e) => {
-                e.target.style.backgroundColor = "#92A4AD";
+                e.target.style.backgroundColor = '#92A4AD';
               }} // 호버 시 배경색 변경
               onMouseLeave={(e) => {
-                e.target.style.backgroundColor = "#B1BDC5";
+                e.target.style.backgroundColor = '#B1BDC5';
               }} // 호버 종료 시 배경색 원래대로
             >
               로그인

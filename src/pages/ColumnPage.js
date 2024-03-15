@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
-import styled from "styled-components";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import "bootstrap/dist/css/bootstrap.min.css";
+import React, { useEffect, useState } from 'react';
+import axios from '../api/axios.js';
+import styled from 'styled-components';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Container = styled.div`
   width: 90%;
@@ -107,11 +107,11 @@ function ColumnPage() {
   const [editMode, setEditMode] = useState(false);
   const [editCardId, setEditCardId] = useState(null);
   const [cardData, setCardData] = useState({
-    cardTitle: "",
-    cardContent: "",
+    cardTitle: '',
+    cardContent: '',
     cardStartTime: new Date(),
     cardEndTime: new Date(),
-    cardStatus: "IN_PROGRESS",
+    cardStatus: 'IN_PROGRESS',
   });
 
   useEffect(() => {
@@ -120,12 +120,10 @@ function ColumnPage() {
 
   const fetchCards = async () => {
     try {
-      const response = await axios.get(
-        "http://localhost:3000/api/columns/14/cards"
-      );
+      const response = await axios.get('http://localhost:3000/api/columns/14/cards');
       setCards(response.data);
     } catch (error) {
-      console.error("Error fetching cards:", error);
+      console.error('Error fetching cards:', error);
     }
   };
 
@@ -134,11 +132,11 @@ function ColumnPage() {
     setEditMode(false);
     setEditCardId(null);
     setCardData({
-      cardTitle: "",
-      cardContent: "",
+      cardTitle: '',
+      cardContent: '',
       cardStartTime: new Date(),
       cardEndTime: new Date(),
-      cardStatus: "IN_PROGRESS",
+      cardStatus: 'IN_PROGRESS',
     });
   };
 
@@ -182,16 +180,14 @@ function ColumnPage() {
   };
 
   const handleDelete = async (cardId) => {
-    if (window.confirm("Are you sure you want to delete this card?")) {
+    if (window.confirm('Are you sure you want to delete this card?')) {
       try {
-        await axios.delete(
-          `http://localhost:3000/api/columns/14/cards/${cardId}`
-        );
-        alert("Card deleted successfully");
+        await axios.delete(`http://localhost:3000/api/columns/14/cards/${cardId}`);
+        alert('Card deleted successfully');
         fetchCards();
       } catch (error) {
-        console.error("Error deleting card:", error);
-        alert("Error deleting card");
+        console.error('Error deleting card:', error);
+        alert('Error deleting card');
       }
     }
   };
@@ -221,24 +217,18 @@ function ColumnPage() {
     try {
       let response;
       if (editMode) {
-        response = await axios.put(
-          `http://localhost:3000/api/columns/14/cards/${editCardId}`,
-          cardPayload
-        );
+        response = await axios.put(`http://localhost:3000/api/columns/14/cards/${editCardId}`, cardPayload);
         setEditMode(false);
         setEditCardId(null);
       } else {
-        response = await axios.post(
-          "http://localhost:3000/api/columns/14/cards",
-          cardPayload
-        );
+        response = await axios.post('http://localhost:3000/api/columns/14/cards', cardPayload);
       }
-      console.log("Card saved:", response.data);
+      console.log('Card saved:', response.data);
       setShowModal(false);
       fetchCards();
     } catch (error) {
-      console.error("Error saving card:", error);
-      alert("Error saving card");
+      console.error('Error saving card:', error);
+      alert('Error saving card');
     }
   };
 
@@ -254,10 +244,7 @@ function ColumnPage() {
             <strong>카드 ID: {card.cardId}</strong>
             <p>카드 제목: {card.cardTitle}</p>
             <p>카드 내용: {card.cardContent}</p>
-            <Icon
-              onClick={() => toggleOptions(card.cardId)}
-              style={{ position: "absolute", top: "10px", right: "10px" }}
-            >
+            <Icon onClick={() => toggleOptions(card.cardId)} style={{ position: 'absolute', top: '10px', right: '10px' }}>
               ...
             </Icon>
             {showOptionsCardId === card.cardId && (
@@ -275,67 +262,33 @@ function ColumnPage() {
             <button type="button" onClick={toggleModal}>
               Close
             </button>
-            <h2>{editMode ? "Edit Card" : "Create a Card"}</h2>
+            <h2>{editMode ? 'Edit Card' : 'Create a Card'}</h2>
             <form onSubmit={handleSubmit}>
               <div className="form-group">
                 <label htmlFor="cardTitle">Card Title:</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="cardTitle"
-                  name="cardTitle"
-                  value={cardData.cardTitle}
-                  onChange={handleChange}
-                />
+                <input type="text" className="form-control" id="cardTitle" name="cardTitle" value={cardData.cardTitle} onChange={handleChange} />
               </div>
               <div className="form-group">
                 <label htmlFor="cardContent">Card Content:</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="cardContent"
-                  name="cardContent"
-                  value={cardData.cardContent}
-                  onChange={handleChange}
-                />
+                <input type="text" className="form-control" id="cardContent" name="cardContent" value={cardData.cardContent} onChange={handleChange} />
               </div>
               <div className="form-group">
                 <label htmlFor="startTime">Start Time:</label>
-                <DatePicker
-                  selected={cardData.cardStartTime}
-                  onChange={handleStartDateChange}
-                  showTimeSelect
-                  dateFormat="Pp"
-                  className="form-control"
-                />
+                <DatePicker selected={cardData.cardStartTime} onChange={handleStartDateChange} showTimeSelect dateFormat="Pp" className="form-control" />
               </div>
               <div className="form-group">
                 <label htmlFor="endTime">End Time:</label>
-                <DatePicker
-                  selected={cardData.cardEndTime}
-                  onChange={handleEndDateChange}
-                  showTimeSelect
-                  dateFormat="Pp"
-                  className="form-control"
-                />
+                <DatePicker selected={cardData.cardEndTime} onChange={handleEndDateChange} showTimeSelect dateFormat="Pp" className="form-control" />
               </div>
               <div className="form-group">
                 <label htmlFor="cardStatus">Card Status:</label>
-                <select
-                  id="cardStatus"
-                  name="cardStatus"
-                  value={cardData.cardStatus}
-                  onChange={handleChange}
-                  className="form-control"
-                >
+                <select id="cardStatus" name="cardStatus" value={cardData.cardStatus} onChange={handleChange} className="form-control">
                   <option value="IN_PROGRESS">IN_PROGRESS</option>
                   <option value="COMPLETED">COMPLETED</option>
                   <option value="BLOCKED">BLOCKED</option>
                 </select>
               </div>
-              <SubmitButton type="submit">
-                {editMode ? "Save Changes" : "Add Card"}
-              </SubmitButton>
+              <SubmitButton type="submit">{editMode ? 'Save Changes' : 'Add Card'}</SubmitButton>
             </form>
           </ModalContent>
         </Modal>
