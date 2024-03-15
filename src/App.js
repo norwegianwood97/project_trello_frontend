@@ -10,6 +10,8 @@ import MainPage from './pages/MainPage';
 import BoardPage from './pages/BoardPage';
 import ColumnPage from './pages/ColumnPage';
 import CardPage from './pages/CardPage';
+import LoginPage from './pages/LoginPage';
+import SignupPage from './pages/SignupPage';
 
 function App() {
   // 함수 처리 부분
@@ -22,9 +24,11 @@ function App() {
       </Link>
       <Routes>
         <Route path="/" element={<MainPage />} />
-        <Route path="/boards" element={<BoardPage />} />
-        <Route path="/boards/:boardId/columns" element={<ColumnPage />} />
-        <Route path="/columns/:columnId/cards" element={<CardPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} />
+        <Route path="/board/:boardId" element={<BoardPage />} />
+        <Route path="/column/:columnId" element={<ColumnPage />} />
+        <Route path="/card/:cardId" element={<CardPage />} />
       </Routes>
     </Router>
   );

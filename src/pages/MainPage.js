@@ -44,4 +44,4 @@ function MyBoardPage() {
   );
 }
 
-export default MyBoardPage;
+export default MainPage;

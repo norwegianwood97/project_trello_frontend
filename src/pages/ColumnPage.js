@@ -22,3 +22,5 @@ function CardDetails() {
     </div>
   );
 }
+
+export default ColumnPage;

@@ -57,4 +57,4 @@ const CardDetailPage = () => {
   );
 };
 
-export default CardDetailPage;
+export default CardPage;

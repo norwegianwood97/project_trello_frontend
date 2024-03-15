@@ -30,3 +30,5 @@ function ProjectBoard() {
     </div>
   );
 }
+
+export default BoardPage;
