@@ -1,0 +1,68 @@
+/* CardDetailPage.css */
+.card-detail-container {
+    max-width: 768px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-detail-header {
+    border-bottom: 1px solid #eaeaea;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .card-detail-header h1 {
+    font-size: 1.5rem;
+    color: #333;
+  }
+  
+  .card-content {
+    padding: 1rem 0;
+    border-bottom: 1px solid #eaeaea;
+    margin-bottom: 1rem;
+  }
+  
+  .card-comment-section {
+    padding-bottom: 1rem;
+  }
+  
+  .card-comment-section textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #eaeaea;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    resize: vertical;
+  }
+  
+  .card-comment-section button {
+    padding: 0.5rem 1rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .card-comment-section button:hover {
+    background-color: #0056b3;
+  }
+  
+  .card-comments {
+    margin-bottom: 1rem;
+  }
+  
+  .comment {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eaeaea;
+  }
+  
+  .comment:last-child {
+    border-bottom: none;
+  }
+  
+  /* 기타 필요한 스타일들을 추가하세요 */
+  

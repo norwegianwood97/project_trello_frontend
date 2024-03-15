@@ -22,9 +22,9 @@ function App() {
       </Link>
       <Routes>
         <Route path="/" element={<MainPage />} />
-        <Route path="/api/boards" element={<BoardPage />} />
-        <Route path="/api/boards/:boardId/columns" element={<ColumnPage />} />
-        <Route path="/api/columns/:columnId/cards" element={<CardPage />} />
+        <Route path="/boards" element={<BoardPage />} />
+        <Route path="/boards/:boardId/columns" element={<ColumnPage />} />
+        <Route path="/columns/:columnId/cards" element={<CardPage />} />
       </Routes>
     </Router>
   );
