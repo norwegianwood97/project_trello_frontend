@@ -9,6 +9,7 @@ body {
   padding: 1rem;
   background: #f9f9f9;
   border-radius: 8px;
+  border: 1px solid #000;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -16,13 +17,6 @@ body {
 .card-detail-container:hover {
   transform: translateY(-5px);
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-}
-
-.card-detail-header,
-.card-content {
-  border-bottom: 2px solid #eaeaea;
-  padding-bottom: 1rem;
-  margin-bottom: 1rem;
 }
 
 .card-detail-header h1 {
@@ -35,9 +29,14 @@ body {
   color: #555;
   line-height: 1.5;
 }
+.card-comment-section {
+  display: flex;
+}
 
 .card-comment-section textarea {
-  width: 60%;
+  display: flex;
+  align-items: center;
+  width: 90%;
   padding: 0.75rem;
   border: 2px solid #eaeaea;
   border-radius: 4px;
@@ -59,7 +58,7 @@ body {
   padding: 0.1rem 0.3rem;
   font-size: 0.9rem;
   margin-left: 8px;
-  background-color: #007bff;
+  background-color: #ccd4ee;
   color: white;
   border: none;
   border-radius: 4px;
@@ -70,11 +69,18 @@ body {
 .card-comment-section button:hover,
 .edit-modal .edit-modal-save-button:hover,
 .edit-modal .edit-modal-cancel-button:hover,
-.comment button:hover {
-  background-color: #0056b3;
+.comment-submit-button:hover {
+  background-color: #6e8deb;
   transform: scale(1.05);
 }
-
+.comment-edit-button:hover {
+  background-color: #ddffdd;
+  transform: scale(1.05);
+}
+.comment-delete-button:hover {
+  background-color: #ffdddd;
+  transform: scale(1.05);
+}
 .card-comments .comment {
   padding: 0.75rem 0;
   border-bottom: 1px solid #eaeaea;
@@ -83,14 +89,19 @@ body {
   align-items: center;
 }
 
+.comment-actions {
+  display: flex;
+  gap: 0.5rem;
+}
 .comment button {
-  width: 10%;
+  width: 80%;
   background-color: #eaeaea;
   color: #333;
   cursor: pointer;
 }
 
 .edit-modal {
+  display: flex;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -105,7 +116,7 @@ body {
 }
 
 .edit-modal textarea {
-  width: 100%;
+  width: 95%;
   margin-bottom: 1rem;
   padding: 0.75rem;
   border: 2px solid #eaeaea;
@@ -114,19 +125,19 @@ body {
 }
 
 .edit-modal .edit-modal-save-button {
-  background-color: #28a745;
+  background-color: #cceecc;
   color: white;
 }
 
 .edit-modal .edit-modal-cancel-button {
-  background-color: #dc3545;
+  background-color: #eecccc;
   color: white;
 }
 
 .edit-modal .edit-modal-save-button:hover {
-  background-color: #218838;
+  background-color: #ddffdd;
 }
 
 .edit-modal .edit-modal-cancel-button:hover {
-  background-color: #c82333;
+  background-color: #ffdddd;
 }
