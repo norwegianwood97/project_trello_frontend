@@ -221,9 +221,9 @@ function ColumnPage() {
     window.location.href = 'http://localhost:5000/'; // Directly navigate to the URL
   };
 
-  const fetchColumnTitle = async () => {
+  const fetchColumnTitle = async (columnId) => {
     try {
-      const response = await axios.get('http://localhost:3000/api/columns/14/');
+      const response = await axios.get(`http://localhost:3000/api/columns/${columnId}/`);
       setColumnTitle(response.data.columnTitle); // Assuming 'columnTitle' is the key in the response object
     } catch (error) {
       console.error('Error fetching column title:', error);
