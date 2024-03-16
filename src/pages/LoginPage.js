@@ -17,16 +17,12 @@ function LoginPage() {
         password,
       }); // withCredentials 옵션을 true로 설정
 
-      console.log(email);
-      console.log(password);
-      console.log(response.data); // 응답 로그 확인
-
+      // 응답 로그 확
       // 로그인 성공 시 다음 페이지로 이동
       navigate('/'); // '/main' 페이지로 이동
     } catch (error) {
       console.error('로그인 오류:', error);
-      alert(email, password);
-      console.log(email);
+      alert(error);
     }
   };
 
@@ -44,6 +40,7 @@ function LoginPage() {
           width: '400px',
           padding: '2rem',
           boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
+          backgroundColor:"white"
         }}
       >
         <h1 style={{ textAlign: 'center' }}>로그인</h1>
@@ -59,9 +56,10 @@ function LoginPage() {
               boxShadow: 'none',
               textAlign: 'center',
               alignItems: 'center', // input 요소를 수직 가운데 정렬
+              width:"700px"
             }}
           >
-            <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="email" style={{ margin: '0.5rem 0', padding: '0.5rem' }} />
+            <input  value={email} onChange={(e) => setEmail(e.target.value)} placeholder="email" style={{ margin: '0.5rem 0', padding: '0.5rem' }} />
             <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="비밀번호" style={{ margin: '0.5rem 0', padding: '0.5rem' }} />
             <button
               type="submit"
@@ -74,6 +72,7 @@ function LoginPage() {
                 border: 'none',
                 borderRadius: '5px',
                 cursor: 'pointer',
+                width:"300px"
               }}
               onMouseEnter={(e) => {
                 e.target.style.backgroundColor = '#92A4AD';
