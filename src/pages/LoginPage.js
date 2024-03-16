@@ -12,7 +12,7 @@ function LoginPage() {
     event.preventDefault();
     try {
       // 로그인 요청을 서버에 보냅니다.
-      const response = await axios.post('http://api.nodejstrello.site:3000/api/login', {
+      const response = await axios.post('https://api.nodejstrello.site/api/login', {
         email,
         password,
       }); // withCredentials 옵션을 true로 설정

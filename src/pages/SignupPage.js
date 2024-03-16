@@ -29,7 +29,7 @@ function SignupPage() {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://api.nodejstrello.site:3000/api/sign-up', {
+      const response = await axios.post('https://api.nodejstrello.site/api/sign-up', {
         email,
         nickname,
         password,
