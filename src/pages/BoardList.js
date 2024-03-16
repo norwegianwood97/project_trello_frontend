@@ -9,7 +9,7 @@ function BoardList({ boards }) {
   const handleBoardClick = (boardId) => {
     // 여기에서 boardId를 사용하여 Axios 요청을 보냅니다.
     axios
-      .get(`http://api.nodejstrello.site/api/boards/${boardId}/columns`)
+      .get(`http://api.nodejstrello.site:3000/api/boards/${boardId}/columns`)
       .then((response) => {
         // 요청 성공 시의 처리 로직
          navigate(`board/${boardId}`);

@@ -29,7 +29,7 @@ function SignupPage() {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://api.nodejstrello.site/api/sign-up', {
+      const response = await axios.post('http://api.nodejstrello.site:3000/api/sign-up', {
         email,
         nickname,
         password,
@@ -50,7 +50,7 @@ function SignupPage() {
       <form onSubmit={handleSubmit}>
         <h2>회원가입</h2>
         <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="이메일" required />
-        <input  value={nickname} onChange={(e) => setUsername(e.target.value)} placeholder="이름" required />
+        <input value={nickname} onChange={(e) => setUsername(e.target.value)} placeholder="이름" required />
         <input type="password" value={password} onChange={handlePasswordChange} onFocus={() => setShowPasswordMessage(true)} placeholder="비밀번호" required />
         <input type="password" value={passwordConfirm} onChange={handlePasswordConfirmChange} onFocus={() => setShowPasswordMessage(true)} placeholder="비밀번호 확인" required />
         {showPasswordMessage && password && passwordConfirm && (
