@@ -351,7 +351,7 @@ function ColumnPage() {
     '#FFF7C9', // Lemon Yellow
     '#D9D9D9', // Coral
   ];
-
+  
   const AddCardIcon = styled(FiMoreVertical)`
     cursor: pointer;
     font-size: 24px;
