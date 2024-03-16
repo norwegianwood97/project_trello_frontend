@@ -36,7 +36,7 @@ const CardPage = () => {
       const cardResponse = await axios.get(`http://localhost:3000/api/cards/${cardId}`);
       const cardData = cardResponse.data;
 
-      const commentsResponse = await axios.get(`http://localhost:3000/api/cards/${cardId}/comments`);
+      const commentsResponse = await axios.get(`http://localhost:3000/api/cards/${cardId}`);
       let commentsData = commentsResponse.data;
 
       // 댓글 작성자의 닉네임을 조회하여 각 댓글 정보에 추가

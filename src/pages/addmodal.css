@@ -1,0 +1,71 @@
+/* addmodal.css */
+.modal {
+  display: none; /* 기본 상태에서는 모달을 숨깁니다. */
+  position: fixed; /* 모달을 화면에 고정시킵니다. */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  z-index: 100; /* 모달이 다른 요소들 위에 오도록 z-index를 설정합니다. */
+}
+
+.modal.open {
+  display: flex; /* .open 클래스가 추가되면 모달을 표시합니다. */
+}
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* 반투명 검은 배경 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* 그림자 효과 */
+  width: 90%;
+  max-width: 700px; /* 모달 최대 너비 */
+}
+
+
+input[type="text"],
+textarea {
+  width: calc(100% - 20px); /* 전체 너비에서 패딩을 빼줌 */
+  padding: 10px;
+  margin-bottom: 15px; /* 요소 사이의 간격 */
+  border: 1px solid #ccc; /* 경계선 스타일 */
+  border-radius: 4px; /* 경계선 모서리 둥글게 */
+  box-sizing: border-box; /* 박스 모델 정의 */
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end; /* 버튼을 오른쪽 정렬 */
+  gap: 10px; /* 버튼 사이의 간격 */
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+}
+
+button[type="button"] {
+  background-color: #6c757d;
+}
+
+button:hover {
+  opacity: 0.9;
+}

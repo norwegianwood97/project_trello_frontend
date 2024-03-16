@@ -1,0 +1,24 @@
+.board-list {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  gap: 10px; /* 보드 간의 간격을 설정합니다. */
+}
+
+.board {
+     width: 500px;
+  border: 1px solid #ddd; /* 보더 스타일 */
+  padding: 15px; /* 내부 여백 */
+  border-radius: 8px; /* 모서리 둥글기 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+}
+
+.board-title {
+  margin: 0 0 10px 0; /* 제목 아래의 마진 */
+  font-size: 1.2rem; /* 제목 폰트 사이즈 */
+}
+
+.board-content {
+  margin: 0; /* 내용 마진 */
+  font-size: 1rem; /* 내용 폰트 사이즈 */
+}
