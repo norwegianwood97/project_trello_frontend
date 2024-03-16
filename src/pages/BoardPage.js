@@ -1,6 +1,6 @@
 //BoardPage.js
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from '../api/axios.js';
 import './BoardPage.css';
 import Modal from '../components/Modal';
@@ -8,6 +8,7 @@ import Icon from '../components/Icon.js';
 
 function BoardPage() {
   const { boardId } = useParams();
+  const navigate = useNavigate();
   const [columns, setColumns] = useState([]);
   const [isColumnModalOpen, setIsColumnModalOpen] = useState(false);
   const [newColumnTitle, setNewColumnTitle] = useState('');
@@ -33,6 +34,11 @@ function BoardPage() {
     cardEndTime: {},
     cardStatus: 'IN_PROGRESS',
   });
+
+  // 컬럼 클릭 시 리다이렉트 핸들러
+  const handleColumnClick = (columnId) => {
+    navigate(`/column/${columnId}`);
+  };
 
   // 현재 시간과 3일 후 시간 계산 로직 추가
   const calculateStartAndEndTime = () => {
@@ -256,6 +262,7 @@ function BoardPage() {
             key={column.columnId}
             className="column"
             style={{ backgroundColor: getColorCode(column.columnColor) }} // 컬럼 색상 적용
+            onClick={() => handleColumnClick(column.columnId)} // 컬럼 클릭 이벤트 핸들러 연결
           >
             <div className="card-column-header">
               <h2 className="column-title">{column.columnTitle}</h2>
