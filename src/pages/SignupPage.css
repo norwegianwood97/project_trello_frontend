@@ -1,3 +1,4 @@
+/* SignupPage.css */
 .signup-form-container {
   display: flex;
   max-width: 800px; /* 가로 최대 너비 지정 */
@@ -6,9 +7,8 @@
   align-items: center;
   width: 80cm; /* 원하는 가로 길이로 설정 */
   height: 20cm; /* 원하는 세로 길이로 설정 */
-  text-align: center; 
+  text-align: center;
 }
-
 
 form {
   width: 500px;
@@ -40,7 +40,7 @@ button {
   width: 400px; /* 원하는 너비로 조정 */
   height: 50px; /* 원하는 높이로 조정 */
   padding: 15px; /* 텍스트와 버튼의 경계 간격을 조정 */
-  background-color: #B1BDC5;
+  background-color: #b1bdc5;
   color: #fff;
   border: none;
   border-radius: 50px; /* 동그랗게 만들기 위해 반지름 값을 높이의 절반으로 설정 */

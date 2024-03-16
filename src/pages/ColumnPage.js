@@ -1,104 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from '../api/axios.js';
-import styled from 'styled-components';
+import './ColumnPage.css';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-
-const Container = styled.div`
-  width: 90%;
-  margin: auto;
-  border-radius: 10px;
-  background-color: #f0f0f0;
-  padding: 20px;
-`;
-
-const Header = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-  border-radius: 10px;
-  background-color: white;
-  padding: 20px;
-`;
-
-const Greeting = styled.h1`
-  margin: 0;
-`;
-
-const CardItemStyle = styled.div`
-  position: relative;
-  border: 1px solid #ddd;
-  padding: 40px;
-  margin-bottom: 40px;
-  border-radius: 10px;
-  background-color: white;
-`;
-
-const CardListStyle = styled.div`
-  padding: 0;
-  margin: 0;
-`;
-
-const Modal = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const ModalContent = styled.div`
-  background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-`;
-
-const CardOptions = styled.div`
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background-color: white;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  padding: 5px;
-  z-index: 10;
-
-  div {
-    padding: 10px 15px;
-    font-size: 16px;
-    margin: 5px 0;
-    cursor: pointer;
-    &:hover {
-      background-color: #f0f0f0;
-    }
-  }
-`;
-
-const Icon = styled.div`
-  cursor: pointer;
-  font-size: 24px;
-`;
-
-const SubmitButton = styled.button`
-  background-color: #bca7af;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-
-  &:hover {
-    background-color: #9c8692;
-  }
-`;
 
 function ColumnPage() {
   const [cards, setCards] = useState([]);
@@ -233,32 +137,34 @@ function ColumnPage() {
   };
 
   return (
-    <Container>
-      <Header>
-        <Greeting>안녕하세요!</Greeting>
-        <Icon onClick={toggleModal}>+ Add a card</Icon>
-      </Header>
-      <CardListStyle>
+    <div className="Container">
+      <div className="Header">
+        <h1 className="Greeting">안녕하세요!</h1>
+        <div onClick={toggleModal} className="Icon">
+          + Add a card
+        </div>
+      </div>
+      <div className="CardListStyle">
         {cards.map((card) => (
-          <CardItemStyle key={card.cardId}>
+          <div className="CardItemStyle" key={card.cardId}>
             <strong>카드 ID: {card.cardId}</strong>
             <p>카드 제목: {card.cardTitle}</p>
             <p>카드 내용: {card.cardContent}</p>
-            <Icon onClick={() => toggleOptions(card.cardId)} style={{ position: 'absolute', top: '10px', right: '10px' }}>
+            <div onClick={() => toggleOptions(card.cardId)} className="Icon" style={{ position: 'absolute', top: '10px', right: '10px' }}>
               ...
-            </Icon>
+            </div>
             {showOptionsCardId === card.cardId && (
-              <CardOptions>
+              <div className="CardOptions">
                 <div onClick={() => handleEdit(card)}>수정</div>
                 <div onClick={() => handleDelete(card.cardId)}>삭제</div>
-              </CardOptions>
+              </div>
             )}
-          </CardItemStyle>
+          </div>
         ))}
-      </CardListStyle>
+      </div>
       {showModal && (
-        <Modal>
-          <ModalContent>
+        <div className="Modal">
+          <div className="ModalContent">
             <button type="button" onClick={toggleModal}>
               Close
             </button>
@@ -288,12 +194,14 @@ function ColumnPage() {
                   <option value="BLOCKED">BLOCKED</option>
                 </select>
               </div>
-              <SubmitButton type="submit">{editMode ? 'Save Changes' : 'Add Card'}</SubmitButton>
+              <button type="submit" className="SubmitButton">
+                {editMode ? 'Save Changes' : 'Add Card'}
+              </button>
             </form>
-          </ModalContent>
-        </Modal>
+          </div>
+        </div>
       )}
-    </Container>
+    </div>
   );
 }
 
