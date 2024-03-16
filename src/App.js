@@ -1,7 +1,9 @@
 // app.js
 import './App.css';
+
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios from "./api/axios.js";
+
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 

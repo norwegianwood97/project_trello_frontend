@@ -11,3 +11,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.blur-background {
+  filter: blur(5px); /* 모달이 열릴 때 배경을 흐리게 합니다 */
+}
