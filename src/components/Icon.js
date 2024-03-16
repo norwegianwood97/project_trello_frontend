@@ -36,7 +36,7 @@ function Icon({ type, name, showName = false, textPosition = 'bottom' }) {
 
   const isLinkIcon = ['MainPage'].includes(type);
   if (isLinkIcon) {
-    return <Link to={`/${type.toLowerCase()}`}>{iconElement}</Link>;
+    return <Link to={`/`}>{iconElement}</Link>;
   }
 
   return iconElement;
