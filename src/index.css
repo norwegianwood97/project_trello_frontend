@@ -12,6 +12,7 @@ code {
     monospace;
 }
 
-.blur-background {
-  filter: blur(5px); /* 모달이 열릴 때 배경을 흐리게 합니다 */
+/* index.css or wherever your global styles are defined */
+.blur-background > :not(.modal-backdrop) {
+  filter: blur(5px);
 }
