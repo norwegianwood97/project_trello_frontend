@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from '../api/axios.js';
+import './ColumnPage.css';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 function ColumnPage() {
   const [cards, setCards] = useState([]);
@@ -134,32 +137,34 @@ function ColumnPage() {
   };
 
   return (
-    <Container>
-      <Header>
-        <Greeting>안녕하세요!</Greeting>
-        <Icon onClick={toggleModal}>+ Add a card</Icon>
-      </Header>
-      <CardListStyle>
+    <div className="Container">
+      <div className="Header">
+        <h1 className="Greeting">안녕하세요!</h1>
+        <div onClick={toggleModal} className="Icon">
+          + Add a card
+        </div>
+      </div>
+      <div className="CardListStyle">
         {cards.map((card) => (
-          <CardItemStyle key={card.cardId}>
+          <div className="CardItemStyle" key={card.cardId}>
             <strong>카드 ID: {card.cardId}</strong>
             <p>카드 제목: {card.cardTitle}</p>
             <p>카드 내용: {card.cardContent}</p>
-            <Icon onClick={() => toggleOptions(card.cardId)} style={{ position: 'absolute', top: '10px', right: '10px' }}>
+            <div onClick={() => toggleOptions(card.cardId)} className="Icon" style={{ position: 'absolute', top: '10px', right: '10px' }}>
               ...
-            </Icon>
+            </div>
             {showOptionsCardId === card.cardId && (
-              <CardOptions>
+              <div className="CardOptions">
                 <div onClick={() => handleEdit(card)}>수정</div>
                 <div onClick={() => handleDelete(card.cardId)}>삭제</div>
-              </CardOptions>
+              </div>
             )}
-          </CardItemStyle>
+          </div>
         ))}
-      </CardListStyle>
+      </div>
       {showModal && (
-        <Modal>
-          <ModalContent>
+        <div className="Modal">
+          <div className="ModalContent">
             <button type="button" onClick={toggleModal}>
               Close
             </button>
@@ -189,12 +194,14 @@ function ColumnPage() {
                   <option value="BLOCKED">BLOCKED</option>
                 </select>
               </div>
-              <SubmitButton type="submit">{editMode ? 'Save Changes' : 'Add Card'}</SubmitButton>
+              <button type="submit" className="SubmitButton">
+                {editMode ? 'Save Changes' : 'Add Card'}
+              </button>
             </form>
-          </ModalContent>
-        </Modal>
+          </div>
+        </div>
       )}
-    </Container>
+    </div>
   );
 }
 
