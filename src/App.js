@@ -1,6 +1,9 @@
 // app.js
 import './App.css';
-import React from 'react';
+
+import React, { useEffect, useState } from 'react';
+import axios from "./api/axios.js";
+
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 // 페이지 임포트
