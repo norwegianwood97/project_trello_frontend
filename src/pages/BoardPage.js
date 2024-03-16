@@ -9,9 +9,7 @@ function BoardPage() {
     // API에서 데이터를 가져오는 함수
     const fetchColumns = async () => {
       try {
-        const response = await axios.get(
-          'http://localhost:3000/api/boards/12/columns'
-        );
+        const response = await axios.get('http://localhost:3000/api/boards/12/columns');
         console.log(response.data);
         setColumns(response.data); // API 응답으로 받은 데이터로 상태를 업데이트
       } catch (error) {

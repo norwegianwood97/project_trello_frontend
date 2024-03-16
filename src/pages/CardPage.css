@@ -1,68 +1,132 @@
-/* CardDetailPage.css */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #eeeeee;
+}
+
 .card-detail-container {
-    max-width: 768px;
-    margin: 2rem auto;
-    padding: 1rem;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .card-detail-header {
-    border-bottom: 1px solid black;
-    padding-bottom: 1rem;
-    margin-bottom: 1rem;
-  }
-  
-  .card-detail-header h1 {
-    font-size: 1.5rem;
-    color: #333;
-  }
-  
-  .card-content {
-    padding: 1rem 0;
-    border-bottom: 1px solid #eaeaea;
-    margin-bottom: 1rem;
-  }
-  
-  .card-comment-section {
-    padding-bottom: 1rem;
-  }
-  
-  .card-comment-section textarea {
-    width: 100%;
-    padding: 0.5rem;
-    border: 1px solid #eaeaea;
-    border-radius: 4px;
-    margin-bottom: 1rem;
-    resize: vertical;
-  }
-  
-  .card-comment-section button {
-    padding: 0.5rem 1rem;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .card-comment-section button:hover {
-    background-color: #0056b3;
-  }
-  
-  .card-comments {
-    margin-bottom: 1rem;
-  }
-  
-  .comment {
-    padding: 0.5rem 0;
-    border-bottom: 1px solid #eaeaea;
-  }
-  
-  .comment:last-child {
-    border-bottom: none;
-  }
-  
-  /* 기타 필요한 스타일들을 추가하세요 */
-  
+  max-width: 768px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-detail-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.card-detail-header,
+.card-content {
+  border-bottom: 2px solid #eaeaea;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+
+.card-detail-header h1 {
+  font-size: 2rem;
+  color: #333;
+  margin: 0 0 0.5rem 0;
+}
+
+.card-content {
+  color: #555;
+  line-height: 1.5;
+}
+
+.card-comment-section textarea {
+  width: 60%;
+  padding: 0.75rem;
+  border: 2px solid #eaeaea;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  resize: vertical;
+  transition: border-color 0.2s ease;
+}
+
+.card-comment-section textarea:focus,
+.edit-modal textarea:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.card-comment-section button,
+.edit-modal .edit-modal-save-button,
+.edit-modal .edit-modal-cancel-button {
+  width: 10%;
+  padding: 0.1rem 0.3rem;
+  font-size: 0.9rem;
+  margin-left: 8px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.card-comment-section button:hover,
+.edit-modal .edit-modal-save-button:hover,
+.edit-modal .edit-modal-cancel-button:hover,
+.comment button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.card-comments .comment {
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #eaeaea;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.comment button {
+  width: 10%;
+  background-color: #eaeaea;
+  color: #333;
+  cursor: pointer;
+}
+
+.edit-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 500px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  z-index: 1000;
+}
+
+.edit-modal textarea {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  border: 2px solid #eaeaea;
+  border-radius: 4px;
+  resize: none;
+}
+
+.edit-modal .edit-modal-save-button {
+  background-color: #28a745;
+  color: white;
+}
+
+.edit-modal .edit-modal-cancel-button {
+  background-color: #dc3545;
+  color: white;
+}
+
+.edit-modal .edit-modal-save-button:hover {
+  background-color: #218838;
+}
+
+.edit-modal .edit-modal-cancel-button:hover {
+  background-color: #c82333;
+}

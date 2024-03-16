@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axios from '../api/axios.js';
 import { useNavigate } from 'react-router-dom';
 import './SignupPage.css';
 
@@ -49,41 +49,13 @@ function SignupPage() {
     <div className="signup-form-container">
       <form onSubmit={handleSubmit}>
         <h2>회원가입</h2>
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="이메일"
-          required
-        />
-        <input
-          type="text"
-          value={nickname}
-          onChange={(e) => setUsername(e.target.value)}
-          placeholder="이름"
-          required
-        />
-        <input
-          type="password"
-          value={password}
-          onChange={handlePasswordChange}
-          onFocus={() => setShowPasswordMessage(true)}
-          placeholder="비밀번호"
-          required
-        />
-        <input
-          type="password"
-          value={passwordConfirm}
-          onChange={handlePasswordConfirmChange}
-          onFocus={() => setShowPasswordMessage(true)}
-          placeholder="비밀번호 확인"
-          required
-        />
+        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="이메일" required />
+        <input type="text" value={nickname} onChange={(e) => setUsername(e.target.value)} placeholder="이름" required />
+        <input type="password" value={password} onChange={handlePasswordChange} onFocus={() => setShowPasswordMessage(true)} placeholder="비밀번호" required />
+        <input type="password" value={passwordConfirm} onChange={handlePasswordConfirmChange} onFocus={() => setShowPasswordMessage(true)} placeholder="비밀번호 확인" required />
         {showPasswordMessage && password && passwordConfirm && (
           <div id="pw_check" style={{ color: passwordMatch ? 'green' : 'red' }}>
-            {passwordMatch
-              ? '비밀번호가 일치합니다'
-              : '비밀번호가 일치하지 않습니다'}
+            {passwordMatch ? '비밀번호가 일치합니다' : '비밀번호가 일치하지 않습니다'}
           </div>
         )}
         <button type="submit">회원가입</button>
