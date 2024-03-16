@@ -51,7 +51,7 @@ const CardPage = () => {
 
   const fetchNickname = async (userId) => {
     try {
-      const response = await axios.post('http://localhost:3000/api/user/get', {
+      const response = await axios.post('http://api.nodejstrello.site/api/user/get', {
         userId: userId,
       });
       return response.data.message;
@@ -65,7 +65,7 @@ const CardPage = () => {
   // 현재 사용자의 닉네임을 불러오는 함수
   const fetchCurrentUserNickname = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/api/user/get');
+      const response = await axios.get('http://api.nodejstrello.site/api/user/get');
       setCurrentUserNickname(response.data.message); // 현재 사용자의 닉네임을 상태에 저장
     } catch (error) {
       console.error('Error fetching current user nickname: ', error);
@@ -75,9 +75,9 @@ const CardPage = () => {
 
   const fetchCardAndCommentsDetails = async () => {
     try {
-      const cardResponse = await axios.get(`http://localhost:3000/api/cards/${cardId}`);
+      const cardResponse = await axios.get(`http://api.nodejstrello.site/api/cards/${cardId}`);
       const cardData = cardResponse.data;
-      const commentsResponse = await axios.get(`http://localhost:3000/api/cards/${cardId}/comments`);
+      const commentsResponse = await axios.get(`http://api.nodejstrello.site/api/cards/${cardId}/comments`);
       let commentsData = commentsResponse.data;
 
       const commentsWithNickname = await Promise.all(
@@ -110,7 +110,7 @@ const CardPage = () => {
 
   const handleDeleteComment = async (commentId) => {
     try {
-      await axios.delete(`http://localhost:3000/api/cards/${cardId}/comments/${commentId}`);
+      await axios.delete(`http://api.nodejstrello.site/api/cards/${cardId}/comments/${commentId}`);
       setComments(comments.filter((comment) => comment.commentId !== commentId));
     } catch (error) {
       console.error('Error deleting comment: ', error);
@@ -124,7 +124,7 @@ const CardPage = () => {
 
   const handleCommentSubmit = async () => {
     try {
-      await axios.post(`http://localhost:3000/api/cards/${cardId}/comments`, {
+      await axios.post(`http://api.nodejstrello.site/api/cards/${cardId}/comments`, {
         commentContent: newComment,
       });
 
@@ -147,7 +147,7 @@ const CardPage = () => {
 
   const saveEditedComment = async () => {
     try {
-      await axios.put(`http://localhost:3000/api/cards/${cardId}/comments/${editingCommentId}`, {
+      await axios.put(`http://api.nodejstrello.site/api/cards/${cardId}/comments/${editingCommentId}`, {
         commentContent: editingCommentContent,
       });
       fetchCardAndCommentsDetails();

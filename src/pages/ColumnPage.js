@@ -224,7 +224,7 @@ function ColumnPage() {
 
   const fetchColumnTitle = async (columnId) => {
     try {
-      const response = await axios.get(`http://localhost:3000/api/columns/${columnId}/`);
+      const response = await axios.get(`http://api.nodejstrello.site/api/columns/${columnId}/`);
       setColumnTitle(response.data.columnTitle); // Assuming 'columnTitle' is the key in the response object
     } catch (error) {
       console.error('Error fetching column title:', error);
@@ -233,7 +233,7 @@ function ColumnPage() {
 
   // const fetchUserNickname = async () => {
   //   try {
-  //     const response = await axios.get('http://localhost:3000/api/user/get');
+  //     const response = await axios.get('http://api.nodejstrello.site/api/user/get');
   //     setUserNickname(response.data.message); // Assuming the nickname is returned in the 'message' field
   //   } catch (error) {
   //     console.error('Error fetching user nickname:', error);
@@ -243,16 +243,16 @@ function ColumnPage() {
   // const fetchUserNickname = async (userId) => {
   //   try {
   //     // 여기서 userId를 서버에 보내어 현재 사용자인지 확인할 수 있습니다.
-  //     const currentUserResponse = await axios.get('http://localhost:3000/api/user/');
+  //     const currentUserResponse = await axios.get('http://api.nodejstrello.site/api/user/');
   //     const currentUserId = currentUserResponse.data.userId;
 
   //     let response;
   //     // 현재 사용자인 경우
   //     if (currentUserId === userId) {
-  //       response = await axios.get('http://localhost:3000/api/user/');
+  //       response = await axios.get('http://api.nodejstrello.site/api/user/');
   //     } else {
   //       // 다른 사용자인 경우
-  //       response = await axios.post('http://localhost:3000/api/user/', { userId });
+  //       response = await axios.post('http://api.nodejstrello.site/api/user/', { userId });
   //     }
 
   //     setUserNickname(response.data.nickname);
@@ -263,7 +263,7 @@ function ColumnPage() {
 
   const fetchCards = async (columnId) => {
     try {
-      const response = await axios.get(`http://localhost:3000/api/columns/${columnId}/cards`);
+      const response = await axios.get(`http://api.nodejstrello.site/api/columns/${columnId}/cards`);
       setCards(response.data);
     } catch (error) {
       console.error('Error fetching cards:', error);
@@ -332,7 +332,7 @@ function ColumnPage() {
   const handleDelete = async (columnId, cardId) => {
     if (window.confirm('Are you sure you want to delete this card?')) {
       try {
-        await axios.delete(`http://localhost:3000/api/columns/${columnId}/cards/${cardId}`);
+        await axios.delete(`http://api.nodejstrello.site/api/columns/${columnId}/cards/${cardId}`);
         alert('카드가 삭제되었습니다!');
         fetchCards();
       } catch (error) {
@@ -399,11 +399,11 @@ function ColumnPage() {
     try {
       let response;
       if (editMode) {
-        response = await axios.put(`http://localhost:3000/api/columns/14/cards/${editCardId}`, cardPayload);
+        response = await axios.put(`http://api.nodejstrello.site/api/columns/14/cards/${editCardId}`, cardPayload);
         setEditMode(false);
         setEditCardId(null);
       } else {
-        response = await axios.post('http://localhost:3000/api/columns/14/cards', cardPayload);
+        response = await axios.post('http://api.nodejstrello.site/api/columns/14/cards', cardPayload);
       }
       console.log('Card saved:', response.data);
       setShowModal(false);
