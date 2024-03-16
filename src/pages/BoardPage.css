@@ -1,83 +1,125 @@
 /* BoardPage.css */
 .board-container {
-    max-width: 1200px;
-    margin: auto;
-    padding: 20px;
-  }
-  
-  .board-header {
-    text-align: center;
-    margin-bottom: 30px;
-  }
-  
-  .board-title {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  
-  .board-owner {
-    font-size: 16px;
-  }
-  
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+.board-header {
+  margin-bottom: 30px;
+}
+
+.board-title {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.board-owner {
+  font-size: 16px;
+}
+
+.board-columns {
+  display: flex;
+  flex-wrap: wrap; /* 줄바꿈을 위해 flex-wrap 추가 */
+  justify-content: space-between;
+  /* 내용물의 유무에 상관없이 기본적인 컬럼의 크기를 정해놓고 만약에 컬럼의 내용물이 추가된다면 조정할 수 있도록 flex-grow 속성을 추가합니다. */
+  flex-grow: 1;
+  margin-bottom: 30px;
+  /* 영역의 기본 높이를 50px로 설정하고 내용물이 추가될 때마다 높이가 조정되도록 min-height 속성을 추가합니다. */
+  min-height: 50px;
+
+}
+
+.column {
+  width: calc(25% - 10px); /* 한 줄에 네 개씩 출력하기 위해 너비 조정 */
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 15px; /* 각 칼럼 사이의 간격 조정 */
+  min-height: 300px; /* 컬럼의 기본 높이를 200px로 설정 */
+}
+
+.column-title {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.cards {
+  margin-bottom: 15px;
+}
+
+.card {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  margin-bottom: 10px;
+  /* 각 카드의 색상은 이미지 기준으로 조정합니다. */
+}
+
+.add-column-btn{
+  width:10%;
+  background-color: rgb(74, 150, 74);
+  border: none;
+  padding: 6px 10px; /* 버튼의 패딩을 수정하여 크기를 줄임 */
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px; /* 버튼의 글꼴 크기 조정 */
+  /* 영역의 우측 상단에 출력되도록 위치를 조정합니다. */
+  position: absolute;
+  top: 70px;
+  right: 20px;
+}
+
+.add-card-btn {
+  width: 50%;
+  background-color: rgb(74, 150, 74);
+  border: none;
+  padding: 6px 10px; /* 버튼의 패딩을 수정하여 크기를 줄임 */
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px; /* 버튼의 글꼴 크기 조정 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.add-card-btn:hover,
+.add-column-btn:hover {
+  background-color: black;
+}
+
+.save-card-btn,
+.save-column-btn {
+  background-color: rgb(11, 155, 107);
+  border: none;
+  padding: 6px 10px; /* 버튼의 패딩을 수정하여 크기를 줄임 */
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px; /* 버튼의 글꼴 크기 조정 */
+}
+
+.save-card-btn:hover,
+.save-column-btn:hover {
+  background-color: black;
+}
+
+/* 반응형 레이아웃을 위한 스타일 */
+@media (max-width: 768px) {
   .board-columns {
-    display: flex;
-    justify-content: space-between;
+    flex-direction: column;
   }
-  
+
   .column {
-    width: calc(33.333% - 10px);
-    background-color: #f9f9f9;
-    padding: 15px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    margin-right: 15px;
-  }
-  
-  .column:last-child {
-    margin-right: 0;
-  }
-  
-  .column-title {
-    font-size: 20px;
+    width: 100%;
     margin-bottom: 15px;
   }
-  
-  .cards {
-    margin-bottom: 15px;
-  }
-  
-  .card {
-    background-color: #fff;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-    margin-bottom: 10px;
-    /* 각 카드의 색상은 이미지 기준으로 조정합니다. */
-  }
-  
-  .add-card-btn, .add-column-btn {
-    background-color: #eee;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .add-card-btn:hover, .add-column-btn:hover {
-    background-color: #ddd;
-  }
-  
-  /* 이곳에 추가적인 스타일을 작성할 수 있습니다. */
-  
-  /* 반응형 레이아웃을 위한 스타일 */
-  @media (max-width: 768px) {
-    .board-columns {
-      flex-direction: column;
-    }
-  
-    .column {
-      width: 100%;
-      margin-bottom: 15px;
-    }
-  }
-  
+}
+
+.blur-background {
+  filter: blur(5px); /* Blur 강도를 적절한 값으로 조절 */
+}
