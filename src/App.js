@@ -2,7 +2,6 @@
 import './App.css';
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { Link } from 'react-router-dom';
 
 // 페이지 임포트
 import MainPage from './pages/MainPage';
@@ -11,15 +10,14 @@ import ColumnPage from './pages/ColumnPage';
 import CardPage from './pages/CardPage';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
+import Icon from './components/Icon.js';
 
 function App() {
   // 함수 처리 부분
   // 프론트 요소 배치 부분
   return (
     <Router>
-      <Link to="/" className="MainPage">
-        ToMainPage(icon으로 대체)
-      </Link>
+      <Icon type="MainPage" />
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/login" element={<LoginPage />} />
@@ -33,6 +31,3 @@ function App() {
 }
 
 export default App;
-
-//123456@naver.com
-//123456

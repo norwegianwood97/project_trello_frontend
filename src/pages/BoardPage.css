@@ -6,12 +6,32 @@
 }
 
 .board-header {
-  margin-bottom: 30px;
+  margin-bottom: 50px;
+  
 }
 
-.board-title {
-  font-size: 24px;
-  margin-bottom: 10px;
+.board-title{
+  display: flex;
+  align-items: center;
+  gap: 20px; 
+}
+
+.board-members{
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  gap: 20px; 
+}
+
+.member-list{
+  display: flex;
+  align-items: center;
+  gap: 10px; 
+}
+
+
+.board-content{
+  font-size: 20px;
 }
 
 .board-owner {
@@ -40,9 +60,40 @@
   min-height: 300px; /* 컬럼의 기본 높이를 200px로 설정 */
 }
 
+
+/* column-title,column-add-icon */
 .column-title {
   font-size: 20px;
   margin-bottom: 15px;
+}
+.column-add-icon,
+.column-modify-icon {
+  margin-left: 8px; /* adjust as needed */
+  cursor: pointer;
+}
+
+/* board-title, board-owner */
+.board-title {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+.board-owner {
+  margin-left: 8px; /* adjust as needed */
+  cursor: pointer;
+}
+
+
+.add-card-text {
+  cursor: pointer;
+  padding: 10px; /* 클릭 영역을 넓히기 위한 패딩 */
+  border-radius: 5px; /* 모서리를 둥글게 */
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.add-card-text:hover {
+  background-color: rgba(74, 150, 74, 0.1); /* 호버 효과 */
 }
 
 .cards {
@@ -93,6 +144,68 @@
   background-color: black;
 }
 
+
+.column-header {
+  display: flex;
+  align-items: center;
+}
+
+
+.card-column-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+
+.column-modify-name {
+  /* Style as needed, but this is a div, not a modal title */
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem; /* adjust as needed */
+}
+
+
+
+.column-modify-name {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.delete-column-btn{
+  background-color: rgb(255, 0, 0);
+  border: none;
+  padding: 6px 10px; /* 버튼의 패딩을 수정하여 크기를 줄임 */
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px; /* 버튼의 글꼴 크기 조정 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+}
+
+.save-column-btn {
+  background-color: rgb(11, 155, 107);
+  border: none;
+  padding: 6px 10px; /* 버튼의 패딩을 수정하여 크기를 줄임 */
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px; /* 버튼의 글꼴 크기 조정 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 .save-card-btn,
 .save-column-btn {
   background-color: rgb(11, 155, 107);
@@ -116,6 +229,7 @@
 
   .column {
     width: 100%;
+    display: flex;
     margin-bottom: 15px;
   }
 }
