@@ -5,8 +5,8 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* 투명도 조절 */
-  z-index: 1000; /* 충분히 높은 z-index */
+  background-color: rgba(0, 0, 0, 0.5) !important; /* 투명도 조절 */
+  z-index: 1; /* 충분히 높은 z-index */
 }
 
 .modal-box {
@@ -17,5 +17,5 @@
   background-color: white;
   padding: 20px;
   border-radius: 8px;
-  z-index: 1001; /* modal-backdrop보다 높은 z-index */
+  z-index: 200; /* modal-backdrop보다 높은 z-index */
 }

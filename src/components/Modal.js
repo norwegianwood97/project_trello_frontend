@@ -10,9 +10,14 @@ const Modal = ({ children, isOpen, onClose }) => {
     e.stopPropagation(); // 모달 박스 클릭 시 이벤트 전파 방지
   };
 
+  const handleCloseClick = (e) => {
+    e.stopPropagation();
+    onClose();
+  };
+
   return ReactDOM.createPortal(
     <>
-      <div className="modal-backdrop" onClick={onClose}>
+      <div className="modal-backdrop" onClick={handleCloseClick}>
         <div className="modal-box" onClick={handleBackdropClick}>
           {children}
         </div>
