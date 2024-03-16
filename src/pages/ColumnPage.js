@@ -6,7 +6,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FiMoreVertical } from 'react-icons/fi'; // Example using react-icons
 import { FaUser } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,useParams  } from 'react-router-dom';
 import './CardPage.css';
 
 const Container = styled.div`
@@ -192,6 +192,7 @@ const SubmitButton = styled.button`
 
 function ColumnPage() {
   const navigate = useNavigate();
+  const { columnId } = useParams()
   const [cards, setCards] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [showOptionsCardId, setShowOptionsCardId] = useState(null);
@@ -208,10 +209,10 @@ function ColumnPage() {
   });
 
   useEffect(() => {
-    fetchColumnTitle();
-    fetchCards();
+    fetchColumnTitle(columnId);
+    fetchCards(columnId);
     // fetchUserNickname();
-  }, []);
+  }, [columnId]);
 
   const navigateToCard = (cardId) => {
     navigate(`/card/${cardId}`);
@@ -260,9 +261,9 @@ function ColumnPage() {
   //   }
   // };
 
-  const fetchCards = async () => {
+  const fetchCards = async (columnId) => {
     try {
-      const response = await axios.get('http://localhost:3000/api/columns/14/cards');
+      const response = await axios.get(`http://localhost:3000/api/columns/${columnId}/cards`);
       setCards(response.data);
     } catch (error) {
       console.error('Error fetching cards:', error);
@@ -328,15 +329,15 @@ function ColumnPage() {
     setShowModal(true);
   };
 
-  const handleDelete = async (cardId) => {
+  const handleDelete = async (columnId, cardId) => {
     if (window.confirm('Are you sure you want to delete this card?')) {
       try {
-        await axios.delete(`http://localhost:3000/api/columns/14/cards/${cardId}`);
-        alert('Card deleted successfully');
+        await axios.delete(`http://localhost:3000/api/columns/${columnId}/cards/${cardId}`);
+        alert('카드가 삭제되었습니다!');
         fetchCards();
       } catch (error) {
         console.error('Error deleting card:', error);
-        alert('Error deleting card');
+        alert('삭제 권한이 없습니다!');
       }
     }
   };
