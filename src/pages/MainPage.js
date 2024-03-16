@@ -89,6 +89,8 @@ function MainPage() {
     setIsAddModalOpen(false);
   };
 
+
+  
   const handleEditSubmit = (updatedData) => {
     axios
       .put('http://localhost:3000/api/user', updatedData)
@@ -111,6 +113,8 @@ function MainPage() {
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
+
+  
 
   const handleAddBoard = (newBoardData) => {
     // POST 요청을 '/api/boards' 엔드포인트로 보냅니다.

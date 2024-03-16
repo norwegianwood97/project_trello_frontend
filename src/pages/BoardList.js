@@ -12,7 +12,7 @@ function BoardList({ boards }) {
       .get(`http://localhost:3000/api/boards/${boardId}/columns`)
       .then((response) => {
         // 요청 성공 시의 처리 로직
-         navigate(`api/boards/${boardId}/columns`);
+         navigate(`board/${boardId}`);
         console.log(response.data);
       })
       .catch((error) => {
