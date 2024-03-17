@@ -73,7 +73,7 @@ function BoardPage() {
 
   const fetchBoardMembers = async () => {
     try {
-      const response = await axios.get(`http://localhost:3000/api/boards/${boardId}/userBoard`);
+      const response = await axios.get(`https://api.nodejstrello.site/api/boards/${boardId}/userBoard`);
       setBoardMembers(response.data);
     } catch (error) {
       console.error('Error fetching board members:', error);
@@ -82,7 +82,7 @@ function BoardPage() {
 
   const fetchBoardInfo = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/api/boards');
+      const response = await axios.get('https://api.nodejstrello.site/api/boards');
       if (response.data && response.data.length > 0) {
         const { boardTitle, boardCode, writerNickname, boardContent } = response.data[0];
         setBoardInfo({ boardTitle, boardCode, writerNickname, boardContent });
@@ -94,14 +94,14 @@ function BoardPage() {
 
   const fetchColumnsAndCards = async () => {
     try {
-      const response = await axios.get(`http://localhost:3000/api/boards/${boardId}/columns`, {
+      const response = await axios.get(`https://api.nodejstrello.site/api/boards/${boardId}/columns`, {
         headers: { 'Cache-Control': 'no-cache' },
       });
       let columnsData = response.data;
 
       const columnsWithCards = await Promise.all(
         columnsData.map(async (column) => {
-          const res = await axios.get(`http://localhost:3000/api/columns/${column.columnId}/cards`, {
+          const res = await axios.get(`https://api.nodejstrello.site/api/columns/${column.columnId}/cards`, {
             headers: { 'Cache-Control': 'no-cache' },
           });
           return { ...column, cards: res.data };
@@ -127,7 +127,7 @@ function BoardPage() {
   const handleAddCard = async () => {
     try {
       console.log('Sending new card data:', newCard); // 데이터 로깅
-      await axios.post(`http://localhost:3000/api/columns/${selectedColumnId}/cards`, newCard);
+      await axios.post(`https://api.nodejstrello.site/api/columns/${selectedColumnId}/cards`, newCard);
       setIsCardModalOpen(false);
       document.getElementById('root').classList.add('blur-background');
       closeCardModal(); // 모달을 닫고 배경 흐림 효과를 제거
@@ -160,7 +160,7 @@ function BoardPage() {
 
   // 컬럼 추가 함수
   const handleAddColumn = async () => {
-    const url = `http://localhost:3000/api/boards/${boardId}/columns`; // 로깅을 위한 변수 추가
+    const url = `https://api.nodejstrello.site/api/boards/${boardId}/columns`; // 로깅을 위한 변수 추가
     // alert('Sending POST request to URL:', url); // URL 로깅
     try {
       await axios.post(url, { columnTitle: newColumnTitle });
@@ -209,7 +209,7 @@ function BoardPage() {
     };
 
     try {
-      await axios.put(`http://localhost:3000/api/boards/12/columns/${editingColumnId}`, updatedColumnData);
+      await axios.put(`https://api.nodejstrello.site/api/boards/12/columns/${editingColumnId}`, updatedColumnData);
       setIsModifyColumnModalOpen(false);
       document.getElementById('root').classList.remove('blur-background');
       fetchColumnsAndCards(); // Refresh columns after modification
@@ -221,7 +221,7 @@ function BoardPage() {
   // Function to handle DELETE request
   const handleDeleteColumn = async () => {
     try {
-      await axios.delete(`http://localhost:3000/api/boards/12/columns/${editingColumnId}`);
+      await axios.delete(`https://api.nodejstrello.site/api/boards/12/columns/${editingColumnId}`);
       setIsModifyColumnModalOpen(false);
       document.getElementById('root').classList.remove('blur-background');
       fetchColumnsAndCards(); // Refresh columns after deletion

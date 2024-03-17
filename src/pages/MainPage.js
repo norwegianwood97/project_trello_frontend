@@ -27,7 +27,7 @@ function MainPage() {
   useEffect(() => {
     // Fetch user information
     axios
-      .get('http://localhost:3000/api/user/get', {
+      .get('https://api.nodejstrello.site/api/user/get', {
         headers: {
           'Cache-Control': 'no-cache',
         },
@@ -41,7 +41,7 @@ function MainPage() {
 
     // Fetch board information
     axios
-      .get('http://localhost:3000/api/boards', {
+      .get('https://api.nodejstrello.site/api/boards', {
         headers: {
           'Cache-Control': 'no-cache',
         },
@@ -51,7 +51,7 @@ function MainPage() {
         console.error('게시판 데이터를 가져오는 데 실패했습니다:', error);
       });
     axios
-      .get('http://localhost:3000/api/boards/userBoard', {
+      .get('https://api.nodejstrello.site/api/boards/userBoard', {
         headers: {
           'Cache-Control': 'no-cache',
         },
@@ -65,11 +65,11 @@ function MainPage() {
   }, []);
 
   const handleLogout = () => {
-    axios.delete('http://localhost:3000/api/logout').then(() => navigate('/login')); // Make sure to navigate to the correct path
+    axios.delete('https://api.nodejstrello.site/api/logout').then(() => navigate('/login')); // Make sure to navigate to the correct path
   };
 
   const handleWithdrawal = () => {
-    axios.delete('http://localhost:3000/api/user').then(() => navigate('/login')); // Make sure to navigate to the correct path
+    axios.delete('https://api.nodejstrello.site/api/user').then(() => navigate('/login')); // Make sure to navigate to the correct path
   };
 
   const openModal = () => {
@@ -93,7 +93,7 @@ function MainPage() {
   
   const handleEditSubmit = (updatedData) => {
     axios
-      .put('http://localhost:3000/api/user', updatedData)
+      .put('https://api.nodejstrello.site/api/user', updatedData)
       .then((response) => {
         // Make sure this matches the actual structure of your response
         closeModal();
@@ -119,7 +119,7 @@ function MainPage() {
   const handleAddBoard = (newBoardData) => {
     // POST 요청을 '/api/boards' 엔드포인트로 보냅니다.
     axios
-      .post('http://localhost:3000/api/boards', newBoardData)
+      .post('https://api.nodejstrello.site/api/boards', newBoardData)
       .then((response) => {
         // 요청이 성공적으로 처리되면 실행됩니다.
         // 여기서는 상태를 업데이트하여 새로 추가된 보드를 보드 목록에 반영합니다.
@@ -151,7 +151,7 @@ function MainPage() {
 
     // axios를 사용하여 서버에 POST 요청
     axios
-      .post('http://localhost:3000/api/boards/joinPage', formData)
+      .post('https://api.nodejstrello.site/api/boards/joinPage', formData)
       .then((response) => {
         // 요청 성공 시의 로직
         console.log(response.data);
