@@ -209,7 +209,7 @@ function BoardPage() {
     };
 
     try {
-      await axios.put(`/api/boards/12/columns/${editingColumnId}`, updatedColumnData);
+      await axios.put(`/api/boards/${boardId}/columns/${editingColumnId}`, updatedColumnData);
       setIsModifyColumnModalOpen(false);
       document.getElementById('root').classList.remove('blur-background');
       fetchColumnsAndCards(); // Refresh columns after modification
@@ -221,7 +221,7 @@ function BoardPage() {
   // Function to handle DELETE request
   const handleDeleteColumn = async () => {
     try {
-      await axios.delete(`/api/boards/12/columns/${editingColumnId}`);
+      await axios.delete(`/api/boards/${boardId}/columns/${editingColumnId}`);
       setIsModifyColumnModalOpen(false);
       document.getElementById('root').classList.remove('blur-background');
       fetchColumnsAndCards(); // Refresh columns after deletion
