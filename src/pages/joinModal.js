@@ -20,7 +20,7 @@ function JoinBoardModal({ isOpen, onClose, onJoinSubmit }) {
           <h2>보드 참여</h2>
           <input placeholder="참여 코드 입력" value={boardCode} onChange={(e) => setboardCode(e.target.value)} />
           <div className="modal-actions">
-            <button type="submit" >
+            <button type="submit" onClick={handleSubmit}>
               참여하기
             </button>
             <button type="button" onClick={onClose}>

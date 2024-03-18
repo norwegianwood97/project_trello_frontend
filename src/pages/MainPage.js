@@ -154,13 +154,12 @@ function MainPage() {
       .post('/api/boards/joinPage', formData)
       .then((response) => {
         // 요청 성공 시의 로직
-        console.log(response.data);
-        alert('참여 성공!');
+        window.location.reload();
         // 여기에서 추가적인 성공 처리 로직을 구현할 수 있습니다.
       })
       .catch((error) => {
         // 요청 실패 시의 로직
-        console.error(error);
+        alert(error);
         alert('참여 실패: ' + error.message);
       });
   };
