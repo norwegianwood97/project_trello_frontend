@@ -341,7 +341,7 @@ function ColumnPage() {
     setShowModal(true);
   };
 
-  const handleDelete = async (columnId, cardId) => {
+  const handleDelete = async (cardId) => {
     if (window.confirm('Are you sure you want to delete this card?')) {
       try {
         await axios.delete(`/api/columns/${columnId}/cards/${cardId}`);
