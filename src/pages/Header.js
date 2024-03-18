@@ -10,6 +10,9 @@ function Header({ user, onLogout, onWithdrawal, openModal }) {
   const handleLoginClick = () => {
     navigate('/login'); // 로그인 페이지로 이동합니다.
   };
+  const handleSignupClick  = ()=>{
+    navigate('/signup')
+  }
   return (
     <div className="main-container">
       <div className="user-profile">
@@ -28,9 +31,11 @@ function Header({ user, onLogout, onWithdrawal, openModal }) {
                 <p onClick={onWithdrawal}>탈퇴하기</p>
               </>
             ) : (
-              <button onClick={handleLoginClick}>로그인</button> // 버튼 클릭 이벤트 추가
+              <>
+                <button onClick={handleLoginClick} id = "loginB">로그인</button> 
+                <button onClick={handleSignupClick} id = "signupB">회원가입</button>
+              </>
             )}
-            
           </div>
         </div>
       </div>
