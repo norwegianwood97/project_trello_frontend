@@ -21,9 +21,7 @@ function LoginPage() {
       // 로그인 성공 시 다음 페이지로 이동
       navigate('/'); // '/main' 페이지로 이동
     } catch (error) {
-     //alert(error.response.data.error.message.info);
-      alert("이메일이나 비밀번호가 틀립니다")
-      window.location.reload();
+      alert(error.response.data.error.message);
     }
   };
 
