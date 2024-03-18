@@ -411,11 +411,11 @@ function ColumnPage() {
     try {
       let response;
       if (editMode) {
-        response = await axios.put(`/api/columns/14/cards/${editCardId}`, cardPayload);
+        response = await axios.put(`/api/columns/${columnId}/cards/${editCardId}`, cardPayload);
         setEditMode(false);
         setEditCardId(null);
       } else {
-        response = await axios.post('/api/columns/14/cards', cardPayload);
+        response = await axios.post(`/api/columns/${columnId}/cards`, cardPayload);
       }
       console.log('Card saved:', response.data);
       setShowModal(false);
