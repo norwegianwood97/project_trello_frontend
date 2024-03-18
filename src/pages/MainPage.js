@@ -36,7 +36,7 @@ function MainPage() {
         setUser(response.data.message); // Make sure this matches the actual structure of your response
       })
       .catch((error) => {
-        console.error('사용자 정보 가져오기 실패:', error);
+        console.error('닉네임을 가져오는데 실패했습니다');
       });
 
     // Fetch board information
@@ -48,7 +48,7 @@ function MainPage() {
       })
       .then((response) => setBoards(response.data)) // Make sure this matches the actual structure of your response
       .catch((error) => {
-        console.error('게시판 데이터를 가져오는 데 실패했습니다:', error);
+        
       });
     axios
       .get('/api/boards/userBoard', {
@@ -60,7 +60,7 @@ function MainPage() {
         setUserBoards(response.data); // 사용자가 참여한 보드 목록 상태 업데이트
       })
       .catch((error) => {
-        console.error('유저게시판 데이터를 가져오는 데 실패했습니다:', error);
+       
       });
   }, []);
 
@@ -99,7 +99,7 @@ function MainPage() {
         closeModal();
         window.location.reload();
       })
-      .catch((error) => console.error('사용자 정보 수정 실패:', error));
+      .catch((error) => console.error('사용자 정보 수정 실패'));
   };
 
   const handleSubmit = (event) => {
@@ -131,8 +131,8 @@ function MainPage() {
       })
       .catch((error) => {
         // 요청이 실패하면 오류를 처리합니다.
-        alert(error);
-        console.error('보드 추가 실패:', error);
+        alert("보드를 추가하는데 실패했습니다");
+      
       });
   };
 
@@ -159,8 +159,7 @@ function MainPage() {
       })
       .catch((error) => {
         // 요청 실패 시의 로직
-        alert(error);
-        alert('참여 실패: ' + error.message);
+        alert('참여 실패: 참여 코드를 확인해주세요');
       });
   };
 
