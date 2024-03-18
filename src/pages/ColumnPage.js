@@ -156,6 +156,7 @@ const UserInfoIcon = styled(FaUser)`
 `;
 
 const CardOptions = styled.div`
+  className: 'card-options'
   position: absolute;
   top: 20px;
   right: 20px;
@@ -224,11 +225,29 @@ function ColumnPage() {
     fetchColumnTitle(columnId);
     fetchCards(columnId);
     // fetchUserNickname();
-  }, [columnId]);
+    const handleClickOutside = (event) => {
+      // 클릭된 요소가 CardOptions 컴포넌트의 바깥이라면 옵션을 숨김
+      if (showOptionsCardId && !event.target.closest('.card-options')) {
+        setShowOptionsCardId(null);
+      }
+    };
+  
+    // 문서 전체에 클릭 이벤트 리스너 추가
+    document.addEventListener('mousedown', handleClickOutside);
+  
+    // 컴포넌트가 언마운트될 때 이벤트 리스너 제거
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+
+  }, [columnId,showOptionsCardId]);
 
   const navigateToCard = (cardId) => {
     navigate(`/card/${cardId}`);
   };
+
+  
+
 
   const handleUserIconClick = () => {
     window.location.href = 'http://localhost:5000/'; // Directly navigate to the URL
@@ -242,6 +261,8 @@ function ColumnPage() {
       console.error('Error fetching column title:', error);
     }
   };
+
+  
 
   // const fetchUserNickname = async () => {
   //   try {
@@ -409,22 +430,24 @@ function ColumnPage() {
     };
 
     try {
-      let response;
       if (editMode) {
-        response = await axios.put(`/api/columns/${columnId}/cards/${editCardId}`, cardPayload);
+        // 카드 수정 로직
+        await axios.put(`/api/columns/${columnId}/cards/${editCardId}`, cardPayload);
         setEditMode(false);
         setEditCardId(null);
       } else {
-        response = await axios.post(`/api/columns/${columnId}/cards`, cardPayload);
+        // 카드 생성 로직
+        await axios.post(`/api/columns/${columnId}/cards`, cardPayload);
+        fetchCards(columnId); // 카드 생성 후 카드 목록을 새로고침
       }
-      console.log('Card saved:', response.data);
-      setShowModal(false);
-      fetchCards();
+      setShowModal(false); // 모달 닫기
+      fetchCards(columnId); // 변경사항 적용을 위해 카드 목록 새로고침
     } catch (error) {
       console.error('Error saving card:', error);
       alert('Error saving card');
     }
   };
+
 
   function formatDate(date) {
     const options = { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' };
