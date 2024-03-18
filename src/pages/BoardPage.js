@@ -65,7 +65,7 @@ function BoardPage() {
 
   useEffect(() => {
     if (boardId) {
-      fetchBoardInfo();
+      fetchBoardInfo(boardId);
       fetchBoardMembers(boardId);
       fetchColumnsAndCards(boardId);
     }
@@ -80,11 +80,12 @@ function BoardPage() {
     }
   };
 
-  const fetchBoardInfo = async () => {
+  const fetchBoardInfo = async (boardId) => {
     try {
       const response = await axios.get('/api/boards');
+      const idx = response.data.findIndex((board) => board.boardId === boardId);
       if (response.data && response.data.length > 0) {
-        const { boardTitle, boardCode, writerNickname, boardContent } = response.data[0];
+        const { boardTitle, boardCode, writerNickname, boardContent } = response.data[idx];
         setBoardInfo({ boardTitle, boardCode, writerNickname, boardContent });
       }
     } catch (error) {
@@ -209,7 +210,7 @@ function BoardPage() {
     };
 
     try {
-      await axios.put(`/api/boards/12/columns/${editingColumnId}`, updatedColumnData);
+      await axios.put(`/api/boards/${boardId}/columns/${editingColumnId}`, updatedColumnData);
       setIsModifyColumnModalOpen(false);
       document.getElementById('root').classList.remove('blur-background');
       fetchColumnsAndCards(); // Refresh columns after modification
@@ -221,7 +222,7 @@ function BoardPage() {
   // Function to handle DELETE request
   const handleDeleteColumn = async () => {
     try {
-      await axios.delete(`/api/boards/12/columns/${editingColumnId}`);
+      await axios.delete(`/api/boards/${boardId}/columns/${editingColumnId}`);
       setIsModifyColumnModalOpen(false);
       document.getElementById('root').classList.remove('blur-background');
       fetchColumnsAndCards(); // Refresh columns after deletion
