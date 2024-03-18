@@ -81,7 +81,7 @@ const ModalContent = styled.div`
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   width: auto; // Adjust width as necessary, auto ensures it doesn't exceed parent
-  max-width: 500px; // Prevents the modal from being too wide
+  max-width: 700px; // Prevents the modal from being too wide
   display: flex;
   flex-direction: column;
   align-items: center; // Centers the content horizontally;
@@ -124,6 +124,18 @@ const FormInput = styled.input`
   border: 1px solid #ddd;
   border-radius: 5px;
   margin-bottom: 10px; // Space between the input fields
+  width: ${(props) => props.width || '100%'}; // Use the width prop if provided, otherwise default to 100%
+`;
+
+const FormTextArea = styled.textarea`
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  width: 70%; // Sets the width to 70% of its container
+  height: 100px; // Adjust this value to increase the vertical length as desired
+  resize: vertical; // Allows users to resize the textarea vertically
+  // Add any other styles you need
 `;
 
 const FormLabel = styled.label`
@@ -192,7 +204,7 @@ const SubmitButton = styled.button`
 
 function ColumnPage() {
   const navigate = useNavigate();
-  const { columnId } = useParams()
+  const { columnId } = useParams();
   const [cards, setCards] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [showOptionsCardId, setShowOptionsCardId] = useState(null);
@@ -351,7 +363,7 @@ function ColumnPage() {
     '#FFF7C9', // Lemon Yellow
     '#D9D9D9', // Coral
   ];
-  
+
   const AddCardIcon = styled(FiMoreVertical)`
     cursor: pointer;
     font-size: 24px;
@@ -432,7 +444,6 @@ function ColumnPage() {
       <Header>
         <Greeting>{columnTitle || 'Loading...'}</Greeting>
         <AddCardIcon onClick={toggleModal} /> {/* Add card icon */}
-        <UserInfoIcon onClick={handleUserIconClick} />
         {/* <div>Created by: {userNickname}</div> */}
       </Header>
       <CardListStyle>
@@ -483,11 +494,16 @@ function ColumnPage() {
             <h2>Edit Card</h2>
             <Form onSubmit={handleSubmit}>
               <FormLabel htmlFor="cardTitle">Card Title:</FormLabel>
-              <FormInput type="text" id="cardTitle" name="cardTitle" value={cardData.cardTitle} onChange={handleChange} />
-
+              <FormInput
+                type="text"
+                id="cardTitle"
+                name="cardTitle"
+                value={cardData.cardTitle}
+                onChange={handleChange}
+                style={{ width: '70%' }} // Add inline style for debugging
+              />
               <FormLabel htmlFor="cardContent">Card Content:</FormLabel>
-              <FormInput type="text" id="cardContent" name="cardContent" value={cardData.cardContent} onChange={handleChange} />
-
+              <FormInput type="text" id="cardContent" name="cardContent" value={cardData.cardContent} onChange={handleChange} style={{ width: '70%' }} />
               <TimeContainer>
                 <FormLabel htmlFor="startTime">Start Time:</FormLabel>
                 <DatePickerStyle selected={cardData.cardStartTime} onChange={handleStartDateChange} showTimeSelect dateFormat="Pp" />
