@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { FiMoreVertical } from 'react-icons/fi'; // Example using react-icons
 import { FaUser } from 'react-icons/fa';
 import { useNavigate,useParams  } from 'react-router-dom';
+import Icon from '../components/Icon.js';
 import './CardPage.css';
 
 const Container = styled.div`
@@ -176,7 +177,7 @@ const CardOptions = styled.div`
   }
 `;
 
-const Icon = styled(FiMoreVertical)`
+const ModifyIcon = styled(FiMoreVertical)`
   cursor: pointer;
   font-size: 24px;
   position: absolute;
@@ -339,6 +340,7 @@ function ColumnPage() {
     setEditCardId(card.cardId);
     setEditMode(true);
     setShowModal(true);
+    setShowOptionsCardId(null);
   };
 
   const handleDelete = async (cardId) => {
@@ -443,8 +445,7 @@ function ColumnPage() {
     <Container>
       <Header>
         <Greeting>{columnTitle || 'Loading...'}</Greeting>
-        <AddCardIcon onClick={toggleModal} /> {/* Add card icon */}
-        {/* <div>Created by: {userNickname}</div> */}
+        <Icon type="Plus" onClick={toggleModal} />
       </Header>
       <CardListStyle>
         {cards.map((card) => (
@@ -459,7 +460,7 @@ function ColumnPage() {
             <p>카드 내용: {card.cardContent}</p>
             <p>기간: {formatDateRange(card.cardStartTime, card.cardEndTime)}</p>
             <p>상태: {card.cardStatus === 'IN_PROGRESS' ? '진행 중' : card.cardStatus === 'COMPLETED' ? '완료됨' : '취소됨'}</p>
-            <Icon
+            <ModifyIcon
               onClick={(e) => {
                 e.stopPropagation(); // 이벤트 버블링 방지
                 toggleOptions(card.cardId);
@@ -514,11 +515,17 @@ function ColumnPage() {
               </TimeContainer>
 
               <FormLabel htmlFor="cardStatus">Card Status:</FormLabel>
-                    <select id="cardStatus" name="cardStatus" value={cardData.cardStatus} onChange={handleChange} style={{ width: '70%', padding: '10px', borderRadius: '5px', border: '1px solid #ddd', marginBottom: '20px' ,marginLeft: '50px'}}>
-                      <option value="IN_PROGRESS">IN_PROGRESS</option>
-                      <option value="COMPLETED">OMPLETED</option>
-                      <option value="CANCELED">CANCELED</option>
-                    </select>
+              <select
+                id="cardStatus"
+                name="cardStatus"
+                value={cardData.cardStatus}
+                onChange={handleChange}
+                style={{ width: '70%', padding: '10px', borderRadius: '5px', border: '1px solid #ddd', marginBottom: '20px', marginLeft: '50px' }}
+              >
+                <option value="IN_PROGRESS">IN_PROGRESS</option>
+                <option value="COMPLETED">OMPLETED</option>
+                <option value="CANCELED">CANCELED</option>
+              </select>
 
               <SubmitButton type="submit">Save Changes</SubmitButton>
             </Form>

@@ -7,7 +7,7 @@ import mainpage_icon from '../assets/mainpage_icon.png';
 import modify_icon from '../assets/modify_icon.png';
 import user_icon from '../assets/user_icon.png';
 
-function Icon({ type, name, showName = false, textPosition = 'bottom' }) {
+function Icon({ type, name, showName = false, textPosition = 'bottom', onClick }) {
   let iconSrc;
 
   switch (type) {
@@ -28,7 +28,7 @@ function Icon({ type, name, showName = false, textPosition = 'bottom' }) {
   }
 
   const iconElement = (
-    <div className="icon">
+    <div className="icon" onClick={onClick}>
       <img src={iconSrc} alt={type} />
       {showName && <span className={`icon-name ${textPosition}`}>{name}</span>}
     </div>
