@@ -458,6 +458,7 @@ function ColumnPage() {
             <p>카드 제목: {card.cardTitle}</p>
             <p>카드 내용: {card.cardContent}</p>
             <p>기간: {formatDateRange(card.cardStartTime, card.cardEndTime)}</p>
+            <p>상태: {card.cardStatus === 'IN_PROGRESS' ? '진행 중' : card.cardStatus === 'COMPLETED' ? '완료됨' : '취소됨'}</p>
             <Icon
               onClick={(e) => {
                 e.stopPropagation(); // 이벤트 버블링 방지
@@ -512,7 +513,12 @@ function ColumnPage() {
                 <DatePickerStyle selected={cardData.cardEndTime} onChange={handleEndDateChange} showTimeSelect dateFormat="Pp" />
               </TimeContainer>
 
-              {/* ... other form elements ... */}
+              <FormLabel htmlFor="cardStatus">Card Status:</FormLabel>
+                    <select id="cardStatus" name="cardStatus" value={cardData.cardStatus} onChange={handleChange} style={{ width: '70%', padding: '10px', borderRadius: '5px', border: '1px solid #ddd', marginBottom: '20px' ,marginLeft: '50px'}}>
+                      <option value="IN_PROGRESS">IN_PROGRESS</option>
+                      <option value="COMPLETED">OMPLETED</option>
+                      <option value="CANCELED">CANCELED</option>
+                    </select>
 
               <SubmitButton type="submit">Save Changes</SubmitButton>
             </Form>
