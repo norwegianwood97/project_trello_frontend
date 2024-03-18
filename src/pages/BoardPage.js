@@ -65,7 +65,7 @@ function BoardPage() {
 
   useEffect(() => {
     if (boardId) {
-      fetchBoardInfo();
+      fetchBoardInfo(boardId);
       fetchBoardMembers(boardId);
       fetchColumnsAndCards(boardId);
     }
@@ -80,9 +80,9 @@ function BoardPage() {
     }
   };
 
-  const fetchBoardInfo = async () => {
+  const fetchBoardInfo = async (boardId) => {
     try {
-      const response = await axios.get('/api/boards');
+      const response = await axios.get(`/api/boards/${boardId}`);
       if (response.data && response.data.length > 0) {
         const { boardTitle, boardCode, writerNickname, boardContent } = response.data[0];
         setBoardInfo({ boardTitle, boardCode, writerNickname, boardContent });
