@@ -21,8 +21,7 @@ function LoginPage() {
       // 로그인 성공 시 다음 페이지로 이동
       navigate('/'); // '/main' 페이지로 이동
     } catch (error) {
-      console.error('로그인 오류:', error);
-      alert(error);
+      alert(error.response.data.error.message);
     }
   };
 

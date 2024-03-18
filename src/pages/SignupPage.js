@@ -39,8 +39,7 @@ function SignupPage() {
       navigate('/login'); // 메인 페이지로 리다이렉트
       // 추가적인 작업 수행
     } catch (error) {
-      console.error('Error while signing up:', error);
-      alert(error);
+      alert(error.response.data.error.message);
       // 에러 처리
     }
   };
