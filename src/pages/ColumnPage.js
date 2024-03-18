@@ -87,6 +87,7 @@ const ModalContent = styled.div`
   flex-direction: column;
   align-items: center; // Centers the content horizontally;
   flex-direction: column; // Ensure everything is in a column layout
+  onClick: (e) => e.stopPropagation();
 `;
 
 const TimeContainer = styled.div`
@@ -157,6 +158,7 @@ const UserInfoIcon = styled(FaUser)`
 `;
 
 const CardOptions = styled.div`
+  className: 'card-options'
   position: absolute;
   top: 20px;
   right: 20px;
@@ -182,11 +184,11 @@ const ModifyIcon = styled(FiMoreVertical)`
   font-size: 24px;
   position: absolute;
   top: 20px;
-  right: 50px; /* Adjust as needed for spacing */
+  right: 50px;
   transition: fill 0.3s ease;
 
   &:hover {
-    fill: #555; /* Change the color on hover */
+    fill: #555;
   }
 `;
 
@@ -225,11 +227,15 @@ function ColumnPage() {
     fetchColumnTitle(columnId);
     fetchCards(columnId);
     // fetchUserNickname();
-  }, [columnId]);
+
+  }, [columnId,]);
 
   const navigateToCard = (cardId) => {
     navigate(`/card/${cardId}`);
   };
+
+  
+
 
   const handleUserIconClick = () => {
     window.location.href = 'http://localhost:5000/'; // Directly navigate to the URL
@@ -243,6 +249,8 @@ function ColumnPage() {
       console.error('Error fetching column title:', error);
     }
   };
+
+  
 
   // const fetchUserNickname = async () => {
   //   try {
@@ -342,19 +350,21 @@ function ColumnPage() {
     setShowModal(true);
     setShowOptionsCardId(null);
   };
+  
 
   const handleDelete = async (cardId) => {
     if (window.confirm('Are you sure you want to delete this card?')) {
       try {
         await axios.delete(`/api/columns/${columnId}/cards/${cardId}`);
         alert('카드가 삭제되었습니다!');
-        fetchCards();
+        fetchCards(columnId);  // 삭제 후 카드 목록 새로고침
       } catch (error) {
         console.error('Error deleting card:', error);
         alert('삭제 권한이 없습니다!');
       }
     }
   };
+  
 
   const colors = [
     '#FFC9C9', // Original color
@@ -411,22 +421,24 @@ function ColumnPage() {
     };
 
     try {
-      let response;
       if (editMode) {
-        response = await axios.put(`/api/columns/${columnId}/cards/${editCardId}`, cardPayload);
+        // 카드 수정 로직
+        await axios.put(`/api/columns/${columnId}/cards/${editCardId}`, cardPayload);
         setEditMode(false);
         setEditCardId(null);
       } else {
-        response = await axios.post(`/api/columns/${columnId}/cards`, cardPayload);
+        // 카드 생성 로직
+        await axios.post(`/api/columns/${columnId}/cards`, cardPayload);
+        fetchCards(columnId); // 카드 생성 후 카드 목록을 새로고침
       }
-      console.log('Card saved:', response.data);
-      setShowModal(false);
-      fetchCards();
+      setShowModal(false); // 모달 닫기
+      fetchCards(columnId); // 변경사항 적용을 위해 카드 목록 새로고침
     } catch (error) {
       console.error('Error saving card:', error);
       alert('Error saving card');
     }
   };
+
 
   function formatDate(date) {
     const options = { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' };
@@ -470,7 +482,7 @@ function ColumnPage() {
               <CardOptions>
                 <div
                   onClick={(e) => {
-                    e.stopPropagation(); // 이벤트 버블링 방지
+                    e.stopPropagation(); // 이벤트 버블링 중단
                     handleEdit(card);
                   }}
                 >
@@ -478,7 +490,7 @@ function ColumnPage() {
                 </div>
                 <div
                   onClick={(e) => {
-                    e.stopPropagation(); // 이벤트 버블링 방지
+                    e.stopPropagation(); // 이벤트 버블링 중단
                     handleDelete(card.cardId);
                   }}
                 >
