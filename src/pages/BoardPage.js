@@ -24,6 +24,7 @@ function BoardPage() {
     boardCode: '',
     writerNickname: '',
     boardContent: '',
+    boardThumbnail: '',
   });
 
   const [newCard, setNewCard] = useState({
@@ -84,8 +85,8 @@ function BoardPage() {
     try {
       const response = await axios.get(`/api/boards/${boardId}`);
       if (response.data && response.data.length > 0) {
-        const { boardTitle, boardCode, writerNickname, boardContent } = response.data[0];
-        setBoardInfo({ boardTitle, boardCode, writerNickname, boardContent });
+        const { boardTitle, boardCode, writerNickname, boardContent, boardThumbnail } = response.data[0];
+        setBoardInfo({ boardTitle, boardCode, writerNickname, boardContent, boardThumbnail });
       }
     } catch (error) {
       console.error('Error fetching board info: ', error);
@@ -247,11 +248,18 @@ function BoardPage() {
       <header className="board-header">
         <div>
           <div className="board-title">
-            <h1 className="board-title-title">{boardInfo.boardTitle}</h1>
-            <div className="board-title-owner">owner: {boardInfo.writerNickname}</div>
-            <div className="board-title-code">코드: {boardInfo.boardCode}</div>
+            <div className="board-info">
+              <div className="board-title-container">
+                <h1 className="board-title-title">{boardInfo.boardTitle}</h1>
+                <div className="board-title-owner">owner: {boardInfo.writerNickname}</div>
+                <div className="board-title-code">코드: {boardInfo.boardCode}</div>
+              </div>
+              <div className="board-content-container">
+                <div className="board-content">{boardInfo.boardContent}</div>
+              </div>
+            </div>
+            <div className="board-thumbnail-container">{boardInfo.boardThumbnail && <img src={boardInfo.boardThumbnail} alt="Board Thumbnail" className="board-thumbnail" />}</div>
           </div>
-          <div className="board-content">{boardInfo.boardContent}</div>
         </div>
 
         <div className="board-members">

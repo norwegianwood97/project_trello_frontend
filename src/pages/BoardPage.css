@@ -7,26 +7,47 @@
 
 .board-header {
   margin-bottom: 50px;
-  
 }
-
-.board-title{
+.board-title-container {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 20px; 
+  gap: 30px;
 }
-
-.board-members{
+.board-content-container {
+  display: flex;
+  gap: 30px;
+  justify-content: flex-start; /* 아이템들을 컨테이너의 왼쪽으로 정렬 */
+}
+.board-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+.board-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+.board-members {
   margin-top: 50px;
   display: flex;
   align-items: center;
-  gap: 20px; 
+  gap: 20px;
+}
+.board-thumbnail {
+  width: 400px; /* 너비를 400px로 설정 */
+  height: 247px; /* 높이를 247px로 설정 */
+  object-fit: cover; /* 이미지 비율을 유지하면서 영역을 채움 */
 }
 
-.member-list{
+.member-list {
   display: flex;
   align-items: center;
-  gap: 10px; 
+  gap: 10px;
 }
 
 .member-item {
@@ -40,9 +61,8 @@
   margin-top: 5px; /* 아이콘과 닉네임 사이의 간격을 조절합니다. 필요에 따라 조절하세요. */
 }
 
-
-
-.board-content{
+.board-content {
+  /*왼쪽에 붙도록*/
   font-size: 20px;
 }
 
@@ -59,7 +79,6 @@
   margin-bottom: 30px;
   /* 영역의 기본 높이를 50px로 설정하고 내용물이 추가될 때마다 높이가 조정되도록 min-height 속성을 추가합니다. */
   min-height: 50px;
-
 }
 
 .column {
@@ -72,7 +91,6 @@
   min-height: 300px; /* 컬럼의 기본 높이를 200px로 설정 */
 }
 
-
 /*      <div className='column-add-modal'>
           <div className="column-add-name">
           <input className="column-title-input" type="text" placeholder="Column Title" value={newColumnTitle} onChange={(e) => setNewColumnTitle(e.target.value)} />
@@ -80,14 +98,13 @@
         </div> */
 .card-modal,
 .column-modify-modal,
-.column-add-modal{
+.column-add-modal {
   display: flex;
   flex-direction: column;
   align-items: center; /* This centers the children horizontally */
   width: 100%; /* Adjust this as needed, could be a fixed width or percentage */
   max-width: 400px; /* This should match the max-width of the input and textarea */
   margin: 0 auto; /* Centers the container in the middle of the page */
-  
 }
 
 /* column-title-input과 
@@ -95,31 +112,23 @@ column-modify-column-title과
  column-modify-column-order과 
  card-title-input */
 
- .column-title-input,
- .column-modify-column-title,
- .column-modify-column-order,
- .card-title-input,
- .card-content-input {
-   width: 100%; /* Sets the width relative to the parent element */
-   max-width: 500px; /* Ensures all inputs and textareas have the same maximum width */
-   padding: 10px; /* Provides padding inside the input/textarea */
-   margin-bottom: 10px; /* Adds spacing between the elements */
-   box-sizing: border-box; /* Includes padding and border in the element's total width and height */
- }
- 
-
-
-
+.column-title-input,
+.column-modify-column-title,
+.column-modify-column-order,
+.card-title-input,
+.card-content-input {
+  width: 100%; /* Sets the width relative to the parent element */
+  max-width: 500px; /* Ensures all inputs and textareas have the same maximum width */
+  padding: 10px; /* Provides padding inside the input/textarea */
+  margin-bottom: 10px; /* Adds spacing between the elements */
+  box-sizing: border-box; /* Includes padding and border in the element's total width and height */
+}
 
 .save-column-btn {
   width: 100%; /* 너비를 부모 요소에 맞춥니다 */
   max-width: 400px; /* 필요에 따라 최대 너비를 설정할 수 있습니다 */
   /* 필요에 따라 추가 스타일을 적용합니다 */
 }
-
-
-
-
 
 /* column-title,column-add-icon */
 .column-title {
@@ -134,28 +143,22 @@ column-modify-column-title과
   box-sizing: border-box; /* 패딩과 보더를 너비에 포함 */
 }
 
-
 .card-add-name {
   text-align: center;
   font-size: 30px;
   font-weight: bold;
 }
 
-
 .card-content-input {
   height: 150px; /* Sets a fixed height for the textarea */
   resize: none; /* Disables resizing of the textarea */
 }
-
-
-
 
 .save-card-btn {
   width: 100%; /* 너비를 부모 요소에 맞춥니다 */
   max-width: 400px; /* 필요에 따라 최대 너비를 설정할 수 있습니다 */
   /* 필요에 따라 추가 스타일을 적용합니다 */
 }
-
 
 .column-add-icon,
 .column-modify-icon {
@@ -166,8 +169,6 @@ column-modify-column-title과
   /* 아이콘의 위치를 좀 더 위로 올리기 위해 position 속성을 추가합니다. */
   position: relative;
   top: -8px;
-
-
 }
 
 .column-add-icon:hover,
@@ -184,7 +185,6 @@ column-modify-column-title과
   margin-left: 8px; /* adjust as needed */
   cursor: pointer;
 }
-
 
 .add-card-text {
   cursor: pointer;
@@ -213,8 +213,8 @@ column-modify-column-title과
   /* 각 카드의 색상은 이미지 기준으로 조정합니다. */
 }
 
-.add-column-btn{
-  width:10%;
+.add-column-btn {
+  width: 10%;
   background-color: rgb(74, 150, 74);
   border: none;
   padding: 6px 10px; /* 버튼의 패딩을 수정하여 크기를 줄임 */
@@ -248,21 +248,17 @@ column-modify-column-title과
   background-color: black;
 }
 
-
 .column-header {
   display: flex;
   align-items: center; /* 중앙 정렬 */
   padding: 0 15px; /* 패딩을 추가하여 좀 더 시각적 여유를 줍니다 */
 }
 
-
 .card-column-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-
-
 
 .column-modify-name {
   text-align: center;
@@ -276,7 +272,7 @@ column-modify-column-title과
   font-weight: bold;
 }
 
-.delete-column-btn{
+.delete-column-btn {
   background-color: rgb(255, 0, 0);
   border: none;
   padding: 6px 10px; /* 버튼의 패딩을 수정하여 크기를 줄임 */
@@ -289,7 +285,6 @@ column-modify-column-title과
   margin: 0 auto;
   margin-top: 10px;
   margin-bottom: 10px;
-
 }
 
 .save-column-btn {
@@ -328,20 +323,14 @@ column-modify-column-title과
     flex-direction: column;
   }
 
- 
-
   .column {
     width: 100%;
     display: flex;
     margin-bottom: 15px;
   }
-
-  
 }
-
 
 .column:hover {
   /* 경계선이 검정색으로 변경되도록 스타일을 추가합니다. */
-   border: 0.5px solid rgb(150, 144, 144);
- }
-
+  border: 0.5px solid rgb(150, 144, 144);
+}
