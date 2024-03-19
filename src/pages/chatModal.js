@@ -18,7 +18,7 @@ function ChatModal({ isOpen, onClose }) {
     newSocket.on('chat message', (msg) => {
       setMessages((prevMessages) => [...prevMessages, msg]);
     });
-
+ 
     return () => {
       newSocket.off('chat message');
     //   newSocket.close();

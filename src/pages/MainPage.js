@@ -110,10 +110,10 @@ function MainPage() {
     setIsModalOpen(false);
   };
 
-  const handleAddBoard = (newBoardData) => {
+  const handleAddBoard = (formData) => {
     // POST 요청을 '/api/boards' 엔드포인트로 보냅니다.
     axios
-      .post('/api/boards', newBoardData)
+      .post('/api/boards', formData, { headers: { 'Content-Type': 'multipart/form-data' } })
       .then((response) => {
         // 요청이 성공적으로 처리되면 실행됩니다.
         // 여기서는 상태를 업데이트하여 새로 추가된 보드를 보드 목록에 반영합니다.
