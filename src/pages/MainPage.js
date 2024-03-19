@@ -7,6 +7,7 @@ import BoardList from './BoardList'; // Make sure the path to your BoardList com
 import Modal from './modal.js'; // Make sure the path to your Modal component is correct
 import AddBoardModal from './addModal.js';
 import JoinBoardModal from './joinModal.js';
+import ChatModal from './chatModal.js';
 
 function MainPage() {
   const [user, setUser] = useState(null);
@@ -14,6 +15,7 @@ function MainPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false); // 추가
   const [isJoinModalOpen, setIsJoinModalOpen] = useState(false);
+  const [isChatModalOpen, setIsChatModalOpen] = useState(false); // 채팅 모달 상태 추가
   const [userBoards, setUserBoards] = useState([]);
 
   const [editData, setEditData] = useState({
@@ -131,6 +133,10 @@ function MainPage() {
     setIsJoinModalOpen(true);
   };
 
+  const handleChatIconClick = () => {
+    setIsChatModalOpen(true); // 채팅 모달 상태를 true로 설정하여 모달을 엽니다.
+  };
+
   const handleCloseJoinModal = () => {
     setIsJoinModalOpen(false);
   };
@@ -166,21 +172,25 @@ function MainPage() {
             <div className="plus-icon-container" onClick={handleOpenAddModal}>
               <img src="/plus.png" alt="Add Board" className="plus-icon" />
             </div>
+            <div className="chat-icon" onClick={handleChatIconClick}>
+              💬
+            </div>
             <div className="Settings-icon-container" onClick={handleOpenJoinModal}>
               <img src="/setting.png" alt="Settings" className="settings-icon" />
             </div>
           </div>
         </div>
-
+  
         <BoardList boards={boards} />
-
+  
         {isModalOpen && <Modal editData={editData} onClose={closeModal} onSubmit={handleEditSubmit} />}
-        {/* Modal 추가 */}
         {isAddModalOpen && <AddBoardModal isOpen={isAddModalOpen} onClose={handleCloseAddModal} onSubmit={handleAddBoard} />}
         {isJoinModalOpen && <JoinBoardModal isOpen={isJoinModalOpen} onClose={handleCloseJoinModal} onJoinSubmit={handleJoinSubmit} />}
+        {isChatModalOpen && <ChatModal isOpen={isChatModalOpen} onClose={() => setIsChatModalOpen(false)} />}
       </form>
     </div>
   );
+  
 }
 
 export default MainPage;
