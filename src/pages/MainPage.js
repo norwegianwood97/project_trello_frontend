@@ -47,9 +47,7 @@ function MainPage() {
         },
       })
       .then((response) => setBoards(response.data)) // Make sure this matches the actual structure of your response
-      .catch((error) => {
-        
-      });
+      .catch((error) => {});
     axios
       .get('/api/boards/userBoard', {
         headers: {
@@ -59,9 +57,7 @@ function MainPage() {
       .then((response) => {
         setUserBoards(response.data); // 사용자가 참여한 보드 목록 상태 업데이트
       })
-      .catch((error) => {
-       
-      });
+      .catch((error) => {});
   }, []);
 
   const handleLogout = () => {
@@ -89,8 +85,6 @@ function MainPage() {
     setIsAddModalOpen(false);
   };
 
-
-  
   const handleEditSubmit = (updatedData) => {
     axios
       .put('/api/user', updatedData)
@@ -114,12 +108,11 @@ function MainPage() {
     setIsModalOpen(false);
   };
 
-  
-
-  const handleAddBoard = (newBoardData) => {
+  const handleAddBoard = (formData) => {
     // POST 요청을 '/api/boards' 엔드포인트로 보냅니다.
+    alert();
     axios
-      .post('/api/boards', newBoardData)
+      .post('/api/boards', formData, { headers: { 'Content-Type': 'multipart/form-data' } })
       .then((response) => {
         // 요청이 성공적으로 처리되면 실행됩니다.
         // 여기서는 상태를 업데이트하여 새로 추가된 보드를 보드 목록에 반영합니다.
@@ -131,8 +124,7 @@ function MainPage() {
       })
       .catch((error) => {
         // 요청이 실패하면 오류를 처리합니다.
-        alert("보드를 추가하는데 실패했습니다");
-      
+        alert('보드를 추가하는데 실패했습니다');
       });
   };
 
