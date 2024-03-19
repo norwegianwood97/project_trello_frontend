@@ -7,6 +7,7 @@ import BoardList from './BoardList'; // Make sure the path to your BoardList com
 import Modal from './modal.js'; // Make sure the path to your Modal component is correct
 import AddBoardModal from './addModal.js';
 import JoinBoardModal from './joinModal.js';
+import ChatModal from './chatModal.js';
 
 function MainPage() {
   const [user, setUser] = useState(null);
@@ -14,6 +15,7 @@ function MainPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false); // 추가
   const [isJoinModalOpen, setIsJoinModalOpen] = useState(false);
+  const [isChatModalOpen, setIsChatModalOpen] = useState(false); // 채팅 모달 상태 추가
   const [userBoards, setUserBoards] = useState([]);
 
   const [editData, setEditData] = useState({
@@ -47,9 +49,7 @@ function MainPage() {
         },
       })
       .then((response) => setBoards(response.data)) // Make sure this matches the actual structure of your response
-      .catch((error) => {
-        
-      });
+      .catch((error) => {});
     axios
       .get('/api/boards/userBoard', {
         headers: {
@@ -59,9 +59,7 @@ function MainPage() {
       .then((response) => {
         setUserBoards(response.data); // 사용자가 참여한 보드 목록 상태 업데이트
       })
-      .catch((error) => {
-       
-      });
+      .catch((error) => {});
   }, []);
 
   const handleLogout = () => {
@@ -89,8 +87,6 @@ function MainPage() {
     setIsAddModalOpen(false);
   };
 
-
-  
   const handleEditSubmit = (updatedData) => {
     axios
       .put('/api/user', updatedData)
@@ -114,8 +110,6 @@ function MainPage() {
     setIsModalOpen(false);
   };
 
-  
-
   const handleAddBoard = (newBoardData) => {
     // POST 요청을 '/api/boards' 엔드포인트로 보냅니다.
     axios
@@ -131,13 +125,16 @@ function MainPage() {
       })
       .catch((error) => {
         // 요청이 실패하면 오류를 처리합니다.
-        alert("보드를 추가하는데 실패했습니다");
-      
+        alert('보드를 추가하는데 실패했습니다');
       });
   };
 
   const handleOpenJoinModal = () => {
     setIsJoinModalOpen(true);
+  };
+
+  const handleChatIconClick = () => {
+    setIsChatModalOpen(true); // 채팅 모달 상태를 true로 설정하여 모달을 엽니다.
   };
 
   const handleCloseJoinModal = () => {
@@ -175,21 +172,25 @@ function MainPage() {
             <div className="plus-icon-container" onClick={handleOpenAddModal}>
               <img src="/plus.png" alt="Add Board" className="plus-icon" />
             </div>
+            <div className="chat-icon" onClick={handleChatIconClick}>
+              💬
+            </div>
             <div className="Settings-icon-container" onClick={handleOpenJoinModal}>
               <img src="/setting.png" alt="Settings" className="settings-icon" />
             </div>
           </div>
         </div>
-
+  
         <BoardList boards={boards} />
-
+  
         {isModalOpen && <Modal editData={editData} onClose={closeModal} onSubmit={handleEditSubmit} />}
-        {/* Modal 추가 */}
         {isAddModalOpen && <AddBoardModal isOpen={isAddModalOpen} onClose={handleCloseAddModal} onSubmit={handleAddBoard} />}
         {isJoinModalOpen && <JoinBoardModal isOpen={isJoinModalOpen} onClose={handleCloseJoinModal} onJoinSubmit={handleJoinSubmit} />}
+        {isChatModalOpen && <ChatModal isOpen={isChatModalOpen} onClose={() => setIsChatModalOpen(false)} />}
       </form>
     </div>
   );
+  
 }
 
 export default MainPage;

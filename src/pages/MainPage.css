@@ -51,3 +51,15 @@
   height: 24px;
   cursor: pointer; /* 마우스 오버 시 커서 변경 */
 }
+
+.chat-icon {
+  position: fixed; /* 화면에 고정 */
+  bottom: 40px; /* 하단에서 20px 위 */
+  right: 100px; /* 우측에서 20px 왼쪽 */
+  background-color: #007bff; /* 아이콘 배경 색상 */
+  color: white; /* 아이콘 색상 */
+  padding: 10px; /* 내부 여백 */
+  border-radius: 50%; /* 원형 디자인 */
+  cursor: pointer; /* 마우스 오버 시 커서 변경 */
+  font-size: 24px; /* 아이콘 크기 */
+}
