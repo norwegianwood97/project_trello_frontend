@@ -110,7 +110,6 @@ function MainPage() {
 
   const handleAddBoard = (formData) => {
     // POST 요청을 '/api/boards' 엔드포인트로 보냅니다.
-    alert();
     axios
       .post('/api/boards', formData, { headers: { 'Content-Type': 'multipart/form-data' } })
       .then((response) => {
