@@ -17,9 +17,16 @@ function LoginPage() {
         password,
       }); // withCredentials 옵션을 true로 설정
 
-      // 응답 로그 확
-      // 로그인 성공 시 다음 페이지로 이동
-      navigate('/'); // '/main' 페이지로 이동
+    if (response.data && response.data.message) {
+      if (response.data.message === '이미 로그인 된상태 입니다') {
+        // 이미 로그인된 상태라는 메시지가 온 경우
+        alert('이미 로그인 된상태 입니다');
+        navigate('/'); // 메인 페이지로 리다이렉트
+      } else {
+        // 다른 메시지가 온 경우 (예: 로그인 성공)
+        navigate('/'); // 홈 페이지로 리다이렉트
+      }
+    }
     } catch (error) {
       //alert(error.response.data.error.message);
       alert("이메일이나 비밀번호가 틀립니다")
