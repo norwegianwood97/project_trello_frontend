@@ -4,7 +4,7 @@ import axios from 'axios';
 const axiosInstance = axios.create({
   // 테스트 할때는 http://localhost:3000, 배포할때는 https://api.nodejstrello.site
   baseURL: 'https://api.nodejstrello.site',
-  // baseURL: 'http://localhost:3000',
+  //baseURL: 'http://localhost:3000',
   withCredentials: true, // 모든 요청에 자동으로 쿠키를 포함시키도록 설정
 });
 
