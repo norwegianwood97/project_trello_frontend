@@ -21,15 +21,19 @@ function LoginPage() {
         if (response.data.message === '이미 로그인 된상태 입니다') {
           // 이미 로그인된 상태라는 메시지가 온 경우
           alert('이미 로그인 된상태 입니다');
-          navigate('/'); // 메인 페이지로 리다이렉트
+          navigate('/'); // 메인 페이지로 리다이렉      
         } else {
           // 다른 메시지가 온 경우 (예: 로그인 성공)
           navigate('/'); // 홈 페이지로 리다이렉트
         }
       }
+      else if(response.data && response.data.redirectURL){
+          alert("메일 인증을 하고 시도해주세요")
+          window.location.href = response.data.redirectURL;
+      }
     } catch (error) {
       //alert(error.response.data.error.message);
-      alert('이메일이나 비밀번호가 틀립니다');
+      alert('이메일이나 비밀번호가 틀립니다 맞다면 메일인증을 해주세요');
     }
   };
 
