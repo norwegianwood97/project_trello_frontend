@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './ChatModal.css';
 import io from 'socket.io-client';
 
-const SOCKET_IO_URL = 'http://localhost:3000';
+const SOCKET_IO_URL = 'https://api.nodejstrello.site';
 
 function ChatModal({ isOpen, onClose }) {
   const [messages, setMessages] = useState([]);
