@@ -58,6 +58,10 @@ function SignupPage() {
           </div>
         )}
         <button type="submit">회원가입</button>
+        <a class="btn btn-block" href="https://api.nodejstrello.site/api/auth/google" role="button">
+          <i class="fab fa-google"></i>
+          sign up with Google
+        </a>
       </form>
     </div>
   );

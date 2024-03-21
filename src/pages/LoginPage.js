@@ -17,19 +17,19 @@ function LoginPage() {
         password,
       }); // withCredentials 옵션을 true로 설정
 
-    if (response.data && response.data.message) {
-      if (response.data.message === '이미 로그인 된상태 입니다') {
-        // 이미 로그인된 상태라는 메시지가 온 경우
-        alert('이미 로그인 된상태 입니다');
-        navigate('/'); // 메인 페이지로 리다이렉트
-      } else {
-        // 다른 메시지가 온 경우 (예: 로그인 성공)
-        navigate('/'); // 홈 페이지로 리다이렉트
+      if (response.data && response.data.message) {
+        if (response.data.message === '이미 로그인 된상태 입니다') {
+          // 이미 로그인된 상태라는 메시지가 온 경우
+          alert('이미 로그인 된상태 입니다');
+          navigate('/'); // 메인 페이지로 리다이렉트
+        } else {
+          // 다른 메시지가 온 경우 (예: 로그인 성공)
+          navigate('/'); // 홈 페이지로 리다이렉트
+        }
       }
-    }
     } catch (error) {
       //alert(error.response.data.error.message);
-      alert("이메일이나 비밀번호가 틀립니다")
+      alert('이메일이나 비밀번호가 틀립니다');
     }
   };
 
@@ -47,7 +47,7 @@ function LoginPage() {
           width: '400px',
           padding: '2rem',
           boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
-          backgroundColor:"white"
+          backgroundColor: 'white',
         }}
       >
         <h1 style={{ textAlign: 'center' }}>로그인</h1>
@@ -63,10 +63,10 @@ function LoginPage() {
               boxShadow: 'none',
               textAlign: 'center',
               alignItems: 'center', // input 요소를 수직 가운데 정렬
-              width:"700px"
+              width: '700px',
             }}
           >
-            <input  value={email} onChange={(e) => setEmail(e.target.value)} placeholder="email" style={{ margin: '0.5rem 0', padding: '0.5rem' }} />
+            <input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="email" style={{ margin: '0.5rem 0', padding: '0.5rem' }} />
             <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="비밀번호" style={{ margin: '0.5rem 0', padding: '0.5rem' }} />
             <button
               type="submit"
@@ -79,7 +79,7 @@ function LoginPage() {
                 border: 'none',
                 borderRadius: '5px',
                 cursor: 'pointer',
-                width:"300px"
+                width: '300px',
               }}
               onMouseEnter={(e) => {
                 e.target.style.backgroundColor = '#92A4AD';
@@ -90,6 +90,10 @@ function LoginPage() {
             >
               로그인
             </button>
+            <a class="btn btn-block" href="https://api.nodejstrello.site/api/auth/google" role="button">
+              <i class="fab fa-google"></i>
+              sign In with Google
+            </a>
           </form>
         </div>
       </div>
