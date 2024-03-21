@@ -1,0 +1,214 @@
+.chat-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .chat-modal {
+    width: 35%; /* 모달의 너비를 넓게 조정 */
+    height: 60%; /* 모달의 높이를 조정 */
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .chat-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #e5e5e5;
+  }
+  
+  .chat-modal-header h2 {
+    font-size: 1.5rem;
+    margin: 0;
+    flex-grow: 1;
+    color: #333;
+  }
+  
+  .close-button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    width: 50%; /* Assuming the button was full-width, adjust as necessary */
+    font-size: 1.5rem;
+  }
+  
+  .room-input {
+    width: calc(50% - 10px); /* Subtract margin if needed */
+    margin-left: 10px; /* Adjust as needed */
+  }
+
+  .chat-modal-body {
+    overflow-y: auto;
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #f9f9f9; /* 배경색 변경 */
+  }
+  
+  .message {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+  
+  .message:not(:last-child) {
+    margin-bottom: 16px; /* 메시지 간격 조정 */
+  }
+  
+  .message img {
+    width: 30px; /* 프로필 이미지 크기 조정 */
+    height: 30px; /* 프로필 이미지 크기 조정 */
+    border-radius: 50%; /* 원형 이미지 */
+    object-fit: cover; /* 이미지 비율 유지 */
+    margin-right: 10px;
+  }
+  
+  .message-content {
+    background-color: #fff; /* 메시지 박스 배경색 변경 */
+    padding: 10px 15px; /* 패딩 조정 */
+    border-radius: 18px; /* 둥근 모서리 */
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+    max-width: 70%; /* 메시지 박스 최대 너비 */
+    color: #333; /* 텍스트 색상 변경 */
+    font-size: 0.95rem; /* 텍스트 크기 조정 */
+  }
+  
+  .message-time {
+    font-size: 0.8rem;
+    color: #999;
+    margin-left: 10px;
+  }
+  
+  .chat-modal-footer {
+    display: flex;
+    padding: 10px 15px;
+    border-top: 1px solid #e5e5e5; /* 구분선 추가 */
+  }
+  
+  .chat-modal-footer input {
+    flex-grow: 1;
+    padding: 10px 15px;
+    border-radius: 18px;
+    border: 1px solid #e5e5e5;
+    outline: none; /* 포커스 시 테두리 제거 */
+    margin-right: 8px; /* Send 버튼과의 간격 조정 */
+
+  }
+  
+  .chat-modal-footer input:focus {
+    border-color: #a3bffa; /* 포커스 시 테두리 색상 변경 */
+  }
+  
+  .chat-modal-footer button {
+    background-color: #f0f0f0;
+    padding: 10px 20px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    color: #fff;
+    background-color: #bbb; /* 비활성화 상태일 때의 배경색 */
+    padding: 0.75rem 1.5rem; /* 버튼 패딩을 조정하여 크기를 키웁니다 */
+  }
+  
+  .chat-modal-footer input:not(:placeholder-shown) + button {
+    background-color: #0066ff; /* 버튼 활성화 시 배경색 */
+    color: #fff; /* 버튼 활성화 시 텍스트 색상 */
+  }
+  
+  .chat-modal-footer button:hover:enabled {
+    /* 버튼 호버 상태일 때의 배경색 변경 */
+    background-color: #0056e8;
+  }
+  
+  /* 버튼 활성화를 위한 추가 스타일 */
+  .chat-modal-footer input:valid + button {
+    background-color: #0066ff;
+    color: #fff;
+  }
+  
+  .chat-modal-footer input:valid + button {
+    background-color: #0066ff; /* 버튼 활성화 시 배경색 */
+    color: #fff; /* 버튼 활성화 시 텍스트 색상 */
+  }
+
+  .message {
+    display: flex;
+    padding: 5px;
+    margin: 5px;
+  }
+  
+  .own {
+    justify-content: flex-end;
+  }
+  
+  .other {
+    justify-content: flex-start;
+  }
+  
+  .message-text {
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #f0f0f0;
+  }
+  
+  .own .message-text {
+    background-color: #d1edc1;
+  }
+ 
+  .user-icon {
+    width: 40px; /* 적절한 크기로 조절하세요 */
+    height: 40px; /* 적절한 크기로 조절하세요 */
+    border-radius: 50%; /* 원형으로 만들고 싶으면 50%로 설정 */
+    margin-right: 5px; /* 텍스트와의 간격을 설정 */
+  }
+  
+  /* 내가 보낸 메시지는 아이콘을 표시하지 않을 수도 있으므로, 'own' 클래스를 가진 요소에서는 아이콘을 숨길 수 있습니다. */
+  .own .user-icon {
+    display: none; /* 내가 보낸 메시지일 경우 아이콘 숨기기 */
+  }
+
+  .user-select {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    background-color: white;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  /* This is to style the dropdown arrow */
+  .user-select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    height: 50px;
+    background-repeat: no-repeat;
+    background-position-x: 98%;
+    background-position-y: center;
+  }
+  
+  /* When user hovers over the select box */
+  .user-select:hover {
+    border-color: #888;
+  }
+  
+  /* Focus state for accessibility */
+  .user-select:focus {
+    outline: none;
+    border-color: #555;
+  }
+  
