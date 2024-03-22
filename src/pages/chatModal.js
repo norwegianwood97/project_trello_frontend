@@ -2,10 +2,8 @@ import React, { useEffect, useState } from 'react';
 import './ChatModal.css';
 import io from 'socket.io-client';
 
-const SOCKET_IO_URL = process.env.REACT_APP_API_URL;
+const SOCKET_IO_URL = 'http://localhost:4000';
 const TYPING_TIMEOUT = 2000; // 사용자가 타이핑을 멈춘 것으로 간주하기 전까지 기다릴 시간 (2초)
-
-
 
 function ChatModal({ isOpen, onClose }) {
   const [messages, setMessages] = useState([]);
