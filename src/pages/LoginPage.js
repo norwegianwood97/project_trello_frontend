@@ -21,15 +21,14 @@ function LoginPage() {
         if (response.data.message === '이미 로그인 된상태 입니다') {
           // 이미 로그인된 상태라는 메시지가 온 경우
           alert('이미 로그인 된상태 입니다');
-          navigate('/'); // 메인 페이지로 리다이렉      
+          navigate('/'); // 메인 페이지로 리다이렉
         } else {
           // 다른 메시지가 온 경우 (예: 로그인 성공)
           navigate('/'); // 홈 페이지로 리다이렉트
         }
-      }
-      else if(response.data && response.data.redirectURL){
-          alert("메일 인증을 하고 시도해주세요")
-          window.location.href = response.data.redirectURL;
+      } else if (response.data && response.data.redirectURL) {
+        alert('메일 인증을 하고 시도해주세요');
+        window.location.href = response.data.redirectURL;
       }
     } catch (error) {
       //alert(error.response.data.error.message);
@@ -94,9 +93,8 @@ function LoginPage() {
             >
               로그인
             </button>
-            <a class="btn btn-block" href="https://api.nodejstrello.site/api/auth/google" role="button">
-              <i class="fab fa-google"></i>
-              sign In with Google
+            <a className="btn btn-block" href={`${process.env.REACT_APP_API_URL}/api/auth/google`} role="button">
+              <i className="fab fa-google"></i> Sign In with Google
             </a>
           </form>
         </div>
