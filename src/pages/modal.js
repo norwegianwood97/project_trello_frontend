@@ -15,20 +15,18 @@ function Modal({ onClose, onSubmit, editData }) {
     onClose();
   };
 
-   const handleCloseModal = (event) => {
-     // 모달 외부를 클릭했을 때만 모달을 닫도록 처리
-     if (event.target.classList.contains('modal-overlay')) {
-       onClose();
-     }
-   };
+  const handleCloseModal = (event) => {
+    // 모달 외부를 클릭했을 때만 모달을 닫도록 처리
+    if (event.target.classList.contains('modal-overlay')) {
+      onClose();
+    }
+  };
 
   return (
     <div className="modal-overlay" onClick={handleCloseModal}>
       <div className="modal-content">
         <h2>유저 정보 수정</h2>
         <form onSubmit={(e) => e.preventDefault()}>
-          <label htmlFor="email">이메일:</label>
-          <input id="email" name="email" type="email" value={formData.email} onChange={handleChange} />
           <label htmlFor="nickname">닉네임:</label>
           <input id="nickname" name="nickname" value={formData.nickname} onChange={handleChange} />
           <label htmlFor="password">비밀번호:</label>
