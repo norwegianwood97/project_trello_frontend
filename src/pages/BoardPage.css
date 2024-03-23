@@ -10,9 +10,8 @@
 }
 .board-title-container {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 30px;
+  gap: 30px; /* 요소 사이의 간격 설정 */
+  flex-shrink: 0; /* container가 줄어들지 않도록 설정합니다 */
 }
 .board-content-container {
   display: flex;
@@ -20,20 +19,28 @@
   justify-content: flex-start; /* 아이템들을 컨테이너의 왼쪽으로 정렬 */
 }
 .board-upper-section{
-  display: flex;
   gap: 30px;
+  display: flex; /* Flexbox 레이아웃을 사용합니다 */
+  position: relative;
 }
 .board-upper-left-section{
   display: flex;
   align-items: center;
   gap: 20px;
+  flex:1;
   
 }
 .board-title {
   display: flex;
-  align-items: center;
-  gap: 20px;
+  flex-direction: column; /* 세로로 스택합니다 */
+  align-items: flex-start; /* 왼쪽 정렬합니다 */
+  width: 100%; /* 부모 요소의 전체 너비를 차지하도록 설정 */
 }
+
+.board-title-title {
+  align-self: flex-start; /* 왼쪽 정렬 */
+}
+
 .board-info {
   display: flex;
   flex-direction: column;
@@ -48,6 +55,9 @@
   gap: 20px;
 }
 .board-thumbnail {
+  position: absolute;
+  top: 0;
+  right: 0;
   width: 400px; /* 너비를 400px로 설정 */
   height: 247px; /* 높이를 247px로 설정 */
   object-fit: cover; /* 이미지 비율을 유지하면서 영역을 채움 */
@@ -76,9 +86,11 @@
   border: 1px solid #6fa6b9;
   padding: 10px;
   border-radius: 5px;
-
-
+  width: 60ch; /* 30글자의 너비 */
+  max-width: 100%; /* 컨테이너 너비를 초과하지 않음 */
+  overflow-wrap: break-word; /* 글자가 너비를 초과할 경우 줄바꿈 */
 }
+
 
 .board-owner {
   font-size: 16px;
@@ -190,11 +202,6 @@ column-modify-column-title과
   transform: scale(1.1);
 }
 
-/* board-title, board-owner */
-.board-title {
-  font-size: 20px;
-  margin-bottom: 15px;
-}
 .board-owner {
   margin-left: 8px; /* adjust as needed */
   cursor: pointer;
