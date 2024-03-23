@@ -1,7 +1,6 @@
 ***
 ## **💼프로젝트 소개 **
-
-![Title]<img src="https://github.com/norwegianwood97/trello_frontend/assets/118883093/25bdd114-a1b8-400b-939c-b4d755c6764e" height="200" width="200">
+<img src="https://github.com/norwegianwood97/trello_frontend/assets/118883093/25bdd114-a1b8-400b-939c-b4d755c6764e" height="200" width="200">
 - **안녕하세요! 프로젝트 Trello는 실제 Trello 페이지를 모티프 삼아 board, column, card로 분리해 일정을 정리하기 위한 앱입니다.**
 
 ***
@@ -15,23 +14,23 @@
   </tr>
   <tr align="center">
     <td>배포 사이트</td>
-    <td><a target="_blank" rel="noopener noreferrer nofollow" href="https://www.nodejstrello.site/"></a></td>
+    <td><a target="_blank" rel="noopener noreferrer nofollow" href="https://www.nodejstrello.site/">배포 사이트</a></td>
   </tr>
   <tr align="center">
     <td>Frontend Github</td>
-    <td><a target="_blank" rel="noopener noreferrer nofollow" href="https://github.com/norwegianwood97/project_trello_frontend"></a></td>
+    <td><a target="_blank" rel="noopener noreferrer nofollow" href="https://github.com/norwegianwood97/project_trello_frontend">Frontend Github</a></td>
   </tr>
   <tr align="center">
     <td>Backend Github</td>
-    <td><a target="_blank" rel="noopener noreferrer nofollow" href="https://github.com/jovid18/project_trello_backend">/a></td>
+    <td><a target="_blank" rel="noopener noreferrer nofollow" href="https://github.com/jovid18/project_trello_backend">/a>Backend Github</td>
   </tr>
   <tr align="center">
     <td>공개 Notion</td>
-    <td><a target="_blank" rel="noopener noreferrer nofollow" href="https://polished-shrew-581.notion.site/Trello-6db8c49d3b9e45a790fc17439d8b6d7e"></a></td>
+    <td><a target="_blank" rel="noopener noreferrer nofollow" href="https://polished-shrew-581.notion.site/Trello-6db8c49d3b9e45a790fc17439d8b6d7e">공개 Notion</a></td>
   </tr>
   <tr align="center">
     <td>팀 Notion</td>
-    <td><a target="_blank" rel="noopener noreferrer nofollow" href="https://maroon-yttrium-a81.notion.site/Trello-S-A-615eed4f4cd64174b58905f67efb2f99"></a></td>
+    <td><a target="_blank" rel="noopener noreferrer nofollow" href="https://maroon-yttrium-a81.notion.site/Trello-S-A-615eed4f4cd64174b58905f67efb2f99">팀 Notion</a></td>
   </tr>
 </table>
 
