@@ -181,13 +181,13 @@ function BoardPage() {
   // 색상 코드 매핑 함수
   const getColorCode = (colorNumber) => {
     const colors = {
-      1: '#ffdddd',
-      2: '#fff6dd',
-      3: '#ffffdd',
-      4: '#e5ffdd',
-      5: '#ddffff',
-      6: '#dde5ff',
-      7: '#eeddff',
+      0: '#FFDDDD',
+      1: '#FFF6DD',
+      2: '#FFFFDD',
+      3: '#E5FFDD',
+      4: '#DDFFFF',
+      5: '#DDE5FF',
+      6: '#EEDDFF',
     };
     return colors[colorNumber] || '#FFFFFF';
   };
