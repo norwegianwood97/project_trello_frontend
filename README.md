@@ -3,7 +3,9 @@
 
 <img width="400" height = "300" alt="서비스" src="https://polished-shrew-581.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fb0df0dc5-bcfc-4a5a-a31d-c0033437e6ca%2Fa2452049-dec1-458c-acea-3e7048290c74%2Flogo.png?table=block&id=6db8c49d-3b9e-45a7-90fc-17439d8b6d7e&spaceId=b0df0dc5-bcfc-4a5a-a31d-c0033437e6ca&width=250&userId=&cache=v2">
 
-- 안녕하세요! 프로젝트 Trello는 실제 Trello 페이지를 모티프 삼아 board, column, card로 분리해 일정을 정리하기 위한 앱입니다.
+- 안녕하세요! 프로젝트 Trello는 실제 Trello 페이지를 모티프 삼아 페이지를 board, column, card로 분리해 일정을 정리하기 위한 앱입니다.
+
+</br>
 
 
 
@@ -11,27 +13,21 @@
 
 <table width="80%;">
   <tr align="center">
-    <td><strong>구분</strong></td>
     <td><strong>링크</strong></td>
   </tr>
   <tr align="center">
-    <td>배포 사이트</td>
     <td><a target="_blank" rel="noopener noreferrer nofollow" href="https://www.nodejstrello.site/">배포 사이트</a></td>
   </tr>
   <tr align="center">
-    <td>Frontend Github</td>
     <td><a target="_blank" rel="noopener noreferrer nofollow" href="https://github.com/norwegianwood97/project_trello_frontend">Frontend Github</a></td>
   </tr>
   <tr align="center">
-    <td>Backend Github</td>
     <td><a target="_blank" rel="noopener noreferrer nofollow" href="https://github.com/jovid18/project_trello_backend">Backend Github</td>
   </tr>
   <tr align="center">
-    <td>공개 Notion</td>
     <td><a target="_blank" rel="noopener noreferrer nofollow" href="https://polished-shrew-581.notion.site/Trello-6db8c49d3b9e45a790fc17439d8b6d7e">공개 Notion</a></td>
   </tr>
   <tr align="center">
-    <td>팀 Notion</td>
     <td><a target="_blank" rel="noopener noreferrer nofollow" href="https://maroon-yttrium-a81.notion.site/Trello-S-A-615eed4f4cd64174b58905f67efb2f99">팀 Notion</a></td>
   </tr>
 </table>
@@ -49,6 +45,9 @@
 |최준혁|보드 CRUD <br> 프론트 repository 관리 <br> Redis 세션 관리 적용 <br> 동시성 제어(transaction) - 상위 요소 생성시 하위요소 자동 생성 <br> 보드페이지 구현 |
 |윤형식|컬럼 CRUD <br> 댓글페이지 생성,삭제,수정 <br> Socket.io 채팅 기능 구현 <br> 컬럼페이지 구현 <br> 채팅모달 구현 |
 
+</br>
+
+
 
 ## 🗒️ 주요기능
 
@@ -64,19 +63,22 @@
 **프로젝트 관리**
 - 보드/ 칼럼/ 카드와 같이 하위 분류에 따라 업무를 지정하고 관리할 수 있습니다.
 
+</br>
+
+
 
 
 ## 🖊️ ERD 설계
 <img width="1378" alt="서비스" src="https://polished-shrew-581.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fb0df0dc5-bcfc-4a5a-a31d-c0033437e6ca%2F4b4b785f-9aca-44dc-818d-ca7c5875baf8%2FdrawSQL-image-export-2024-03-22.png?table=block&id=d8a40e64-d42d-4074-8136-366d13d5109c&spaceId=b0df0dc5-bcfc-4a5a-a31d-c0033437e6ca&width=1920&userId=&cache=v2">
 
+</br>
+
+
 
 ## 🔍 서비스 아키텍처
 <img width="1378" alt="서비스" src="https://polished-shrew-581.notion.site/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2Fb0df0dc5-bcfc-4a5a-a31d-c0033437e6ca%2F67a96870-dfb2-49d4-9442-7f69d8d79ddd%2Farchitecture.drawio.png?table=block&id=5be2cc70-f732-4d2a-a265-408319ae93c8&spaceId=b0df0dc5-bcfc-4a5a-a31d-c0033437e6ca&width=1920&userId=&cache=v2">
 
-
-
-
-
+</br>
 
 
 
@@ -96,3 +98,6 @@
 |passport.js| 로컬에서 로그인을 진행하는 것과 달리 passport는 구글이나 카카오등 다양한 인증전략을 사용할 수 있습니다. 또한 인증과정에서 작성해야 하는 복잡한 로직을 간단하게 구현하도록 도와줍니다. 따라서 개발 편의성과 구글 로그인 구현을 위해 사용하기로 결정했습니다.|
 |prettier/eslint| 각자 작성한 코드의 스타일을 일치시키기 위해 prettier를 사용하여 세미콜론, 줄 바꿈과 관련하여 자동으로 조정하고자 하였고, ESLint를 이용해 prettier의 스타일에 맞게 코드 스타일을 일치 시키게 하였습니다.|
 |Github Action| Github Action은 사용이 쉽고 복잡한 절차없이 GitHub를 사용할 수 있다는 장점이 있고 배포과정이 이미 구현되어 있는 다양한 종류의 템플릿을 제공합니다. 2주라는 짧은 시간안에 배울 수 있고 사용할 수 있는 GitHub Action을 사용하기로 결정했습니다.|
+
+</br>
+
