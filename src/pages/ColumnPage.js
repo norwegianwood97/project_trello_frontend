@@ -237,10 +237,6 @@ function ColumnPage() {
   
 
 
-  const handleUserIconClick = () => {
-    window.location.href = 'http://localhost:5000/'; // Directly navigate to the URL
-  };
-
   const fetchColumnTitle = async (columnId) => {
     try {
       const response = await axios.get(`/api/columns/${columnId}/`);

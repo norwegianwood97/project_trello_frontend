@@ -1,10 +1,10 @@
 import React from 'react';
-import "./BoardList.css"
+import './BoardList.css';
 import { useNavigate } from 'react-router-dom';
 import axios from '../api/axios.js';
 
 function BoardList({ boards }) {
-      const navigate = useNavigate();
+  const navigate = useNavigate();
   // 보드 클릭 시 실행될 함수
   const handleBoardClick = (boardId) => {
     // 여기에서 boardId를 사용하여 Axios 요청을 보냅니다.
@@ -12,7 +12,7 @@ function BoardList({ boards }) {
       .get(`/api/boards/${boardId}/columns`)
       .then((response) => {
         // 요청 성공 시의 처리 로직
-         navigate(`board/${boardId}`);
+        navigate(`board/${boardId}`);
         console.log(response.data);
       })
       .catch((error) => {

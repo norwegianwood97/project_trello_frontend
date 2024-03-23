@@ -24,6 +24,7 @@ function BoardPage() {
     boardCode: '',
     writerNickname: '',
     boardContent: '',
+    boardThumbnail: '',
   });
 
   const [newCard, setNewCard] = useState({
@@ -84,8 +85,13 @@ function BoardPage() {
     try {
       const response = await axios.get(`/api/boards/${boardId}`);
       if (response.data && response.data.length > 0) {
-        const { boardTitle, boardCode, writerNickname, boardContent } = response.data[0];
-        setBoardInfo({ boardTitle, boardCode, writerNickname, boardContent });
+        const { boardTitle, boardCode, writerNickname, boardContent, boardThumbnail } = response.data[0];
+        let updatedBoardThumbnail = boardThumbnail;
+        if (boardThumbnail) {
+          updatedBoardThumbnail = boardThumbnail.replace('/original/', '/thumb/');
+        }
+
+        setBoardInfo({ boardTitle, boardCode, writerNickname, boardContent, boardThumbnail: updatedBoardThumbnail });
       }
     } catch (error) {
       console.error('Error fetching board info: ', error);
@@ -245,13 +251,34 @@ function BoardPage() {
   return (
     <div className={`board-container ${isCardModalOpen ? 'blur-background' : ''}`}>
       <header className="board-header">
-        <div>
-          <div className="board-title">
-            <h1 className="board-title-title">{boardInfo.boardTitle}</h1>
-            <div className="board-title-owner">owner: {boardInfo.writerNickname}</div>
-            <div className="board-title-code">코드: {boardInfo.boardCode}</div>
+        <div className="board-upper-section">
+          <div className="board-upper-left-section">
+            <div>
+              <div className="board-title">
+                <div className="board-info">
+                  <h1 className="board-title-title">{boardInfo.boardTitle}</h1>
+                  <div className="board-title-container">
+                    <div className="board-title-owner">owner: {boardInfo.writerNickname}</div>
+                    <div className="board-title-code">코드: {boardInfo.boardCode}</div>
+                  </div>
+                </div>
+              </div>
+              <div className="board-content">{boardInfo.boardContent}</div>
+            </div>
           </div>
-          <div className="board-content">{boardInfo.boardContent}</div>
+          <div className="board-thumbnail-container">
+            {boardInfo.boardThumbnail && (
+              <img
+                src={boardInfo.boardThumbnail}
+                alt="Board Thumbnail"
+                className="board-thumbnail"
+                onError={(e) => {
+                  const src = e.target.src;
+                  e.target.src = src.replace('/thumb/', '/original/');
+                }}
+              />
+            )}
+          </div>
         </div>
 
         <div className="board-members">

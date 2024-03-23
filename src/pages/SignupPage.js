@@ -58,6 +58,10 @@ function SignupPage() {
           </div>
         )}
         <button type="submit">회원가입</button>
+        <a className="btn btn-block" href={`${process.env.REACT_APP_API_URL}/api/auth/google`} role="button">
+          <i className="fab fa-google"></i>
+          Sign up with Google
+        </a>
       </form>
     </div>
   );
