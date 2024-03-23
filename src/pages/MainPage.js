@@ -164,30 +164,34 @@ function MainPage() {
 
   return (
     <div className="main-page-container">
-      <img src="/logo.png" alt="loggo" className="loggo"></img>
-      <form className="main-form" onSubmit={handleSubmit}>
-        <Header user={user} onLogout={handleLogout} onWithdrawal={handleWithdrawal} openModal={openModal} />
-        <div className="header-content">
-          <h1 className="board-title">My Board</h1>
+      <div className="trello-logo">
+        <img src="/logo.png" alt="loggo" className="loggo"></img>
+      </div>
+      <div className="user-info">
+        <form className="main-form" onSubmit={handleSubmit}>
+          <Header user={user} onLogout={handleLogout} onWithdrawal={handleWithdrawal} openModal={openModal} />
+          <div className="header-content">
+            <h1 className="board-title">My Board</h1>
 
-          <div className="plus-icon-container" onClick={handleOpenAddModal}>
-            <img src="/plus.png" alt="Add Board" className="plus-icon" />
+            <div className="plus-icon-container" onClick={handleOpenAddModal}>
+              <img src="/plus.png" alt="Add Board" className="plus-icon" />
+            </div>
+            <div className="chat-icon" onClick={handleChatIconClick}>
+              💬
+            </div>
+            <div className="Settings-icon-container" onClick={handleOpenJoinModal}>
+              <img src="/setting.png" alt="Settings" className="settings-icon" />
+            </div>
           </div>
-          <div className="chat-icon" onClick={handleChatIconClick}>
-            💬
-          </div>
-          <div className="Settings-icon-container" onClick={handleOpenJoinModal}>
-            <img src="/setting.png" alt="Settings" className="settings-icon" />
-          </div>
-        </div>
 
-        <BoardList boards={boards} />
+          <BoardList boards={boards} />
 
-        {isModalOpen && <Modal editData={editData} onClose={closeModal} onSubmit={handleEditSubmit} />}
-        {isAddModalOpen && <AddBoardModal isOpen={isAddModalOpen} onClose={handleCloseAddModal} onSubmit={handleAddBoard} />}
-        {isJoinModalOpen && <JoinBoardModal isOpen={isJoinModalOpen} onClose={handleCloseJoinModal} onJoinSubmit={handleJoinSubmit} />}
-        {isChatModalOpen && <ChatModal isOpen={isChatModalOpen} onClose={() => setIsChatModalOpen(false)} />}
-      </form>
+          {isModalOpen && <Modal editData={editData} onClose={closeModal} onSubmit={handleEditSubmit} />}
+          {isAddModalOpen && <AddBoardModal isOpen={isAddModalOpen} onClose={handleCloseAddModal} onSubmit={handleAddBoard} />}
+          {isJoinModalOpen && <JoinBoardModal isOpen={isJoinModalOpen} onClose={handleCloseJoinModal} onJoinSubmit={handleJoinSubmit} />}
+          {isChatModalOpen && <ChatModal isOpen={isChatModalOpen} onClose={() => setIsChatModalOpen(false)} />}
+        </form>
+      </div>
     </div>
   );
 }

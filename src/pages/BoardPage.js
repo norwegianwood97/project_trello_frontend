@@ -287,8 +287,10 @@ function BoardPage() {
             <div className="member-list">
               {boardMembers.map((member) => (
                 <div className="member-item" key={member.userId}>
-                  <Icon type="User" />
-                  <div className="member-nickname">{member.User.nickname}</div>
+                  <div className="board-member-user-icon">
+                    <Icon type="User" />
+                  </div>
+                  <div className="board-member-icon-nickname">{member.User.nickname}</div>
                 </div>
               ))}
             </div>

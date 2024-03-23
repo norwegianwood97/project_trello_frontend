@@ -59,16 +59,13 @@
   gap: 10px;
 }
 
-.member-item {
+.board-member-user-icon{
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 10px 0; /* 멤버 간의 간격을 조정합니다. 필요에 따라 조절하세요. */
 }
 
-.member-nickname {
-  margin-top: 5px; /* 아이콘과 닉네임 사이의 간격을 조절합니다. 필요에 따라 조절하세요. */
-}
 
 .board-content {
   font-size: 20px;
@@ -76,7 +73,7 @@
   word-break: break-all;
   white-space: pre-wrap;
   margin-top: 20px;
-  border: 5px solid #dfdcdc;
+  border: 1px solid #6fa6b9;
   padding: 10px;
   border-radius: 5px;
 
