@@ -106,3 +106,38 @@
 |Github Action| Github Action은 사용이 쉽고 복잡한 절차없이 GitHub를 사용할 수 있다는 장점이 있고 배포과정이 이미 구현되어 있는 다양한 종류의 템플릿을 제공합니다. 2주라는 짧은 시간안에 배울 수 있고 사용할 수 있는 GitHub Action을 사용하기로 결정했습니다.|
 
 </br>
+
+
+
+## ⁉️ 트러블 슈팅
+
+<details>
+  <summary><b>id 전달이 안되는 오류</b></summary>
+  <div markdown="1">
+    <ul>
+// 기존 코드
+  createBoard = async (boardData, {id}) => {
+    const newBoardData = {
+      ...boardData,
+      userId: id,
+      boardWriterId: id,
+    };
+    await this.boardRepository.createBoard(newBoardData);
+    return '보드가 생성됐습니다.';
+  };
+ // 수정 코드
+  createBoard = async (boardData, id) => {
+    const newBoardData = {
+      ...boardData,
+      userId: id,
+      boardWriterId: id,
+    };
+    await this.boardRepository.createBoard(newBoardData);
+    return '보드가 생성됐습니다.';
+  };
+    </ul>
+    <ul>
+    기존에는 id를 객체로 받아 id가 undefined 되어 있었지만 이를 string id로 받게 함
+    </ul>
+  </div>
+</details>
