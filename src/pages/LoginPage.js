@@ -43,6 +43,7 @@ function LoginPage() {
         justifyContent: 'center',
         alignItems: 'center',
         height: '100vh',
+        backgroundColor: '#CDE5E8',
       }}
     >
       <div
@@ -85,7 +86,7 @@ function LoginPage() {
                 width: '300px',
               }}
               onMouseEnter={(e) => {
-                e.target.style.backgroundColor = '#92A4AD';
+                e.target.style.backgroundColor = '#cde5e8';
               }} // 호버 시 배경색 변경
               onMouseLeave={(e) => {
                 e.target.style.backgroundColor = '#B1BDC5';

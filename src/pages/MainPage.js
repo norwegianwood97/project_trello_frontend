@@ -164,25 +164,25 @@ function MainPage() {
 
   return (
     <div className="main-page-container">
+      <img src="/logo.png" alt="loggo" className="loggo"></img>
       <form className="main-form" onSubmit={handleSubmit}>
         <Header user={user} onLogout={handleLogout} onWithdrawal={handleWithdrawal} openModal={openModal} />
         <div className="header-content">
           <h1 className="board-title">My Board</h1>
-          <div className="header-icons">
-            <div className="plus-icon-container" onClick={handleOpenAddModal}>
-              <img src="/plus.png" alt="Add Board" className="plus-icon" />
-            </div>
-            <div className="chat-icon" onClick={handleChatIconClick}>
-              💬
-            </div>
-            <div className="Settings-icon-container" onClick={handleOpenJoinModal}>
-              <img src="/setting.png" alt="Settings" className="settings-icon" />
-            </div>
+
+          <div className="plus-icon-container" onClick={handleOpenAddModal}>
+            <img src="/plus.png" alt="Add Board" className="plus-icon" />
+          </div>
+          <div className="chat-icon" onClick={handleChatIconClick}>
+            💬
+          </div>
+          <div className="Settings-icon-container" onClick={handleOpenJoinModal}>
+            <img src="/setting.png" alt="Settings" className="settings-icon" />
           </div>
         </div>
-  
+
         <BoardList boards={boards} />
-  
+
         {isModalOpen && <Modal editData={editData} onClose={closeModal} onSubmit={handleEditSubmit} />}
         {isAddModalOpen && <AddBoardModal isOpen={isAddModalOpen} onClose={handleCloseAddModal} onSubmit={handleAddBoard} />}
         {isJoinModalOpen && <JoinBoardModal isOpen={isJoinModalOpen} onClose={handleCloseJoinModal} onJoinSubmit={handleJoinSubmit} />}
@@ -190,7 +190,6 @@ function MainPage() {
       </form>
     </div>
   );
-  
 }
 
 export default MainPage;

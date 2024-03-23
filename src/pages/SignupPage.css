@@ -1,4 +1,7 @@
 /* SignupPage.css */
+body {
+  background-color: #cde5e8;
+}
 .signup-form-container {
   display: flex;
   max-width: 800px; /* 가로 최대 너비 지정 */
@@ -48,5 +51,5 @@ button {
 }
 
 button:hover {
-  background-color: #c4d0d7;
+  background-color: #cde5e8;
 }
