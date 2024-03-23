@@ -28,6 +28,12 @@ function SignupPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // 비밀번호 일치 여부를 확인
+    if (password !== passwordConfirm) {
+      alert('비밀번호와 비밀번호 확인이 일치하지 않습니다.');
+      return; // 비밀번호가 일치하지 않으면 여기서 함수 실행을 멈추고 더 이상 진행하지 않음
+    }
+
     try {
       const response = await axios.post('/api/sign-up', {
         email,
