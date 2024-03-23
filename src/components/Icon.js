@@ -30,7 +30,6 @@ function Icon({ type, name, showName = false, textPosition = 'bottom', onClick }
   const iconElement = (
     <div className="icon" onClick={onClick}>
       <img src={iconSrc} alt={type} />
-      {showName && <span className={`icon-name ${textPosition}`}>{name}</span>}
     </div>
   );
 

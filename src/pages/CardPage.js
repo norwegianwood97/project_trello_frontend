@@ -20,7 +20,15 @@ const formatCardTime = (startTime) => {
   const { year, month, day, hour, minute } = startTime;
   return `${year}년 ${month}월 ${day}일 ${hour}시 ${minute}분`;
 };
-
+const cardColorCodes = {
+  0: '#ffdddd',
+  1: '#fff6dd',
+  2: '#ffffdd',
+  3: '#e5ffdd',
+  4: '#ddffff',
+  5: '#dde5ff',
+  6: '#eeddff',
+};
 // 카드의 상태를 문자열로 변환하는 함수
 const formatCardState = (cardStatus) => {
   switch (cardStatus) {
@@ -161,13 +169,15 @@ const CardPage = () => {
   if (!cardDetails) return <div>Loading...</div>;
 
   return (
-    <div className="card-detail-container">
+    <div className="card-detail-container" style={{ backgroundColor: cardColorCodes[cardDetails?.cardColor] }}>
       <div className="card-detail-header">
-        <h1>{cardDetails.cardTitle}</h1>
+        <div className="card-detail-title">
+          <h1>{cardDetails.cardTitle}</h1>
+        </div>
         <p>시작 시간: {formatCardTime(cardDetails.cardStartTime)}</p>
         <p>종료 시간: {formatCardTime(cardDetails.cardEndTime)}</p>
         <p>카드 상태: {formatCardState(cardDetails.cardStatus)}</p>
-        <p className="card-content">{cardDetails.cardContent}</p>
+        <div className="card-content">{cardDetails.cardContent}</div>
       </div>
       <div className="card-comment-section">
         <textarea placeholder="댓글을 입력하세요" value={newComment} onChange={handleCommentChange} />
