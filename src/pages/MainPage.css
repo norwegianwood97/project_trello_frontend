@@ -64,17 +64,22 @@
 .plus-icon,
 .settings-icon {
   position: relative;
-  top: -6px;
-  width: 24px; /* 아이콘 크기 */
+  width: 24px; /* Adjust the icon size if necessary */
   height: 24px;
-  cursor: pointer; /* 마우스 오버 시 커서 변경 */
-  margin-left: -30px;
+  cursor: pointer; /* To indicate the icon is clickable */
+  margin-left: 10px; /* Adjust this to space out the icons, and make sure they do not overlap */
 }
 .plus-icon {
-  margin-left: -70px;
+  margin-left: 10px; /* This should be positive to push it away from the previous element */
 }
+
+.plus-icon-container,
+.settings-icon-container {
+  margin-right: 10px;
+}
+
 .settings-icon {
-  margin-left: -90px;
+  margin-left: 10px; /* This should be positive to push it away from the previous element */
 }
 .chat-icon {
   position: fixed; /* 화면에 고정 */
