@@ -13,22 +13,28 @@
 
 <table width="80%;">
   <tr align="center">
+    <td><strong>구분</strong></td>
     <td><strong>링크</strong></td>
   </tr>
   <tr align="center">
-    <td><a target="_blank" rel="noopener noreferrer nofollow" href="https://www.nodejstrello.site/">배포 사이트</a></td>
+    <td>배포 사이트</td>
+    <td><a target="_blank" rel="noopener noreferrer nofollow" href="https://www.nodejstrello.site/">https://www.nodejstrello.site/</a></td>
   </tr>
   <tr align="center">
-    <td><a target="_blank" rel="noopener noreferrer nofollow" href="https://github.com/norwegianwood97/project_trello_frontend">Frontend Github</a></td>
+    <td>Frontend Github</td>
+    <td><a target="_blank" rel="noopener noreferrer nofollow" href="https://github.com/norwegianwood97/project_trello_frontend">https://github.com/norwegianwood97/project_trello_frontend</a></td>
   </tr>
   <tr align="center">
-    <td><a target="_blank" rel="noopener noreferrer nofollow" href="https://github.com/jovid18/project_trello_backend">Backend Github</td>
+    <td>Backend Github</td>
+    <td><a target="_blank" rel="noopener noreferrer nofollow" href="https://github.com/jovid18/project_trello_backend">https://github.com/jovid18/project_trello_backend</td>
   </tr>
   <tr align="center">
-    <td><a target="_blank" rel="noopener noreferrer nofollow" href="https://polished-shrew-581.notion.site/Trello-6db8c49d3b9e45a790fc17439d8b6d7e">공개 Notion</a></td>
+    <td>공개 Notion</td>
+    <td><a target="_blank" rel="noopener noreferrer nofollow" href="https://polished-shrew-581.notion.site/Trello-6db8c49d3b9e45a790fc17439d8b6d7e">https://polished-shrew-581.notion.site/Trello-6db8c49d3b9e45a790fc17439d8b6d7e</a></td>
   </tr>
   <tr align="center">
-    <td><a target="_blank" rel="noopener noreferrer nofollow" href="https://maroon-yttrium-a81.notion.site/Trello-S-A-615eed4f4cd64174b58905f67efb2f99">팀 Notion</a></td>
+    <td>팀 Notion</td>
+    <td><a target="_blank" rel="noopener noreferrer nofollow" href="https://maroon-yttrium-a81.notion.site/Trello-S-A-615eed4f4cd64174b58905f67efb2f99">https://maroon-yttrium-a81.notion.site/Trello-S-A-615eed4f4cd64174b58905f67efb2f99</a></td>
   </tr>
 </table>
 
@@ -100,4 +106,3 @@
 |Github Action| Github Action은 사용이 쉽고 복잡한 절차없이 GitHub를 사용할 수 있다는 장점이 있고 배포과정이 이미 구현되어 있는 다양한 종류의 템플릿을 제공합니다. 2주라는 짧은 시간안에 배울 수 있고 사용할 수 있는 GitHub Action을 사용하기로 결정했습니다.|
 
 </br>
-
