@@ -141,3 +141,41 @@
     </ul>
   </div>
 </details>
+
+
+<br>
+
+
+## ⁉️ 트러블 슈팅
+
+<details>
+  <summary><b>id 전달이 안되는 오류</b></summary>
+  <div markdown="1">
+
+```javascript
+// 기존 코드
+createBoard = async (boardData, {id}) => {
+  const newBoardData = {
+    ...boardData,
+    userId: id,
+    boardWriterId: id,
+  };
+  await this.boardRepository.createBoard(newBoardData);
+  return '보드가 생성됐습니다.';
+};
+// 수정 코드
+createBoard = async (boardData, id) => {
+  const newBoardData = {
+    ...boardData,
+    userId: id,
+    boardWriterId: id,
+  };
+  await this.boardRepository.createBoard(newBoardData);
+  return '보드가 생성됐습니다.';
+};
+<ul>
+기존에는 id를 객체로 받아 id가 undefined 되어 있었지만 이를 string id로 받게 함
+</ul>
+  </div>
+</details>
+```
