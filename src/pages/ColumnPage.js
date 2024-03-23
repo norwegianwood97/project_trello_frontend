@@ -11,14 +11,14 @@ import Icon from '../components/Icon.js';
 import './CardPage.css';
 
 const Container = styled.div`
-  width: 80%; /* Reduced from 90% to 80% to increase the gap */
-  margin: auto; /* Keeps the container centered */
+  width: 60%;
+  margin: auto;
   border-radius: 10px;
   background-color: #fff;
   padding: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin-top: 50px; /* Add space between Container and CardItemStyle */
-  margin-bottom: 50px; /* Add space between Container and CardItemStyle */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 더 진한 그림자 */
+  margin-top: 50px;
+  margin-bottom: 50px;
 `;
 
 const Header = styled.div`
@@ -40,6 +40,7 @@ const Greeting = styled.h1`
 const CardItemStyle = styled.div`
   position: relative;
   border: 1px solid #ddd;
+
   padding: 20px;
   margin-bottom: 20px;
   margin-left: auto;
@@ -62,6 +63,8 @@ const CardItemStyle = styled.div`
 
 const CardListStyle = styled.div`
   padding: 20px; /* Add padding around the entire list to create space from the container edges */
+  width: 900px;
+  margin: 0 auto; // 상단과 하단 마진은 0, 좌우 마진은 auto로 설정하여 중앙 정렬
 `;
 
 const Modal = styled.div`
@@ -76,25 +79,53 @@ const Modal = styled.div`
   align-items: center;
 `;
 
+// 모달의 전체 배경색과 패딩도 조정합니다.
 const ModalContent = styled.div`
-  background-color: white;
+  background-color: transparent; // 배경색을 투명하게 설정합니다.
   padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  width: auto; // Adjust width as necessary, auto ensures it doesn't exceed parent
-  max-width: 700px; // Prevents the modal from being too wide
+  border-radius: 0; // 테두리 반경을 0으로 설정하여 사각형 모양을 없앱니다.
+  box-shadow: none; // 그림자를 제거합니다.
+  width: auto; // 자동 너비 설정을 유지합니다.
+  max-width: 700px; // 최대 너비 설정을 유지합니다.
   display: flex;
   flex-direction: column;
-  align-items: center; // Centers the content horizontally;
-  flex-direction: column; // Ensure everything is in a column layout
-  onClick: (e) => e.stopPropagation();
+  align-items: center;
+  onclick: (e) => e.stopPropagation();
+`;
+
+const CardContainer = styled.div`
+  background-color: white; // 배경색 설정
+  padding: 20px; // 내부 여백
+  border-radius: 5px; // 모서리 둥글기
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); // 그림자 효과
+  // 높이를 원하는 대로 설정하세요. 'auto'로 설정하면 컨텐츠에 따라 늘어납니다.
+  height: auto;
+  // 다른 스타일 속성들...
+`;
+
+// 'Card' 제목을 위한 스타일 컴포넌트를 정의합니다.
+const CardTitle = styled.h1`
+  font-size: 2em; // 글자 크기를 크게 설정
+  font-weight: bold; // 볼드체로 설정
+  text-align: center; // 가운데 정렬
+  margin-top: 0; // 상단 여백을 제거
+  margin-bottom: 20px; // 제목과 내용 사이의 간격 설정
 `;
 
 const TimeContainer = styled.div`
   display: flex;
-  flex-direction: column; // Stack the date pickers vertically
-  width: 100%; // Use the full width of the ModalContent
-  margin-bottom: 20px; // Add some space before the Save Changes button
+  flex-direction: column;
+  margin-left: 10px; // 필요한 경우 마진 값 조정
+
+  width: calc(100% - 40px); // 모달의 padding을 고려하여 너비를 조정합니다.
+  margin: 0;
+  padding: 0; // TimeContainer 내부 패딩을 제거합니다.
+  box-sizing: border-box;
+`;
+
+const SelectStyle = styled.select`
+  margin-left: 50px; // 드롭다운을 왼쪽으로 옮기기 위해 여백을 조정합니다.
+  // ...기타 스타일 속성
 `;
 
 // Use this style for both the Start Time and End Time DatePicker components
@@ -104,14 +135,14 @@ const DatePickerStyle = styled(DatePicker)`
 `;
 
 const CloseButton = styled.button`
-  background-color: #ccc; // or any color you prefer
-  color: black;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-bottom: 20px; // This adds space between the close button and the form elements
-  float: right; // This will place the button to the right, you can adjust as needed
+  background-color: transparent; // 배경색을 투명하게 설정합니다.
+  color: black; // 버튼의 텍스트 색상을 검은색으로 유지합니다.
+  border: none; // 테두리 제거
+  padding: 10px 20px; // 패딩 유지
+  border-radius: 5px; // 테두리 반경 유지
+  cursor: pointer; // 마우스 커서 포인터 유지
+  margin-bottom: 20px; // 하단 여백 유지
+  float: right; // 오른쪽 정렬 유지
 `;
 
 const Form = styled.form`
@@ -124,9 +155,12 @@ const Form = styled.form`
 const FormInput = styled.input`
   padding: 10px;
   border: 1px solid #ddd;
+  margin-left: 60px; // 왼쪽 여백을 없앱니다.
   border-radius: 5px;
-  margin-bottom: 10px; // Space between the input fields
-  width: ${(props) => props.width || '100%'}; // Use the width prop if provided, otherwise default to 100%
+  margin-bottom: 10px;
+  width: 100%; // 부모 컨테이너에 꽉 차게 조정합니다.
+  box-shadow: none; // 그림자 제거
+  background-color: transparent; // 배경색 투명으로 조정
 `;
 
 const FormTextArea = styled.textarea`
@@ -141,7 +175,7 @@ const FormTextArea = styled.textarea`
 `;
 
 const FormLabel = styled.label`
-  margin-bottom: 5px; // Add a little space above the input field
+  display: none; // 레이블을 숨깁니다.
 `;
 
 const UserInfoIcon = styled(FaUser)`
@@ -193,18 +227,17 @@ const ModifyIcon = styled(FiMoreVertical)`
 `;
 
 const SubmitButton = styled.button`
-  background-color: #bca7af;
-  color: white;
+  background-color: #4caf50; // 버튼의 배경색을 HEX 코드로 설정합니다.
+  color: white; // 텍스트 색상을 하얀색으로 설정합니다.
   border: none;
   padding: 10px 20px;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  display: block; // Sets the element to block level, enabling width and margin auto
-  margin: 0 auto; // Auto margins on both sides to center the button
-  margin-top: 20px; // Adds some space above the button if needed
+  display: block;
+  // margin: 20px auto; // 가운데 정렬을 위한 마진 설정
+  margin-left: 20px;
 `;
-
 function ColumnPage() {
   const navigate = useNavigate();
   const { columnId } = useParams();
@@ -227,8 +260,7 @@ function ColumnPage() {
     fetchColumnTitle(columnId);
     fetchCards(columnId);
     // fetchUserNickname();
-
-  }, [columnId,]);
+  }, [columnId]);
 
   const navigateToCard = (cardId) => {
     navigate(`/card/${cardId}`);
@@ -245,8 +277,6 @@ function ColumnPage() {
       console.error('Error fetching column title:', error);
     }
   };
-
-  
 
   // const fetchUserNickname = async () => {
   //   try {
@@ -346,31 +376,21 @@ function ColumnPage() {
     setShowModal(true);
     setShowOptionsCardId(null);
   };
-  
 
   const handleDelete = async (cardId) => {
     if (window.confirm('Are you sure you want to delete this card?')) {
       try {
         await axios.delete(`/api/columns/${columnId}/cards/${cardId}`);
         alert('카드가 삭제되었습니다!');
-        fetchCards(columnId);  // 삭제 후 카드 목록 새로고침
+        fetchCards(columnId); // 삭제 후 카드 목록 새로고침
       } catch (error) {
         console.error('Error deleting card:', error);
         alert('삭제 권한이 없습니다!');
       }
     }
   };
-  
 
-  const colors = [
-    '#FFC9C9', // Original color
-    '#FFDAB9', // Peach
-    '#E6D7FF', // Lavender
-    '#C9FFCF', // Mint Green
-    '#C9F5FF', // Sky Blue
-    '#FFF7C9', // Lemon Yellow
-    '#D9D9D9', // Coral
-  ];
+  const colors = ['#ffdddd', '#fff6dd', '#ffffdd', '#e5ffdd', '#ddffff', '#dde5ff', '#eeddff'];
 
   const AddCardIcon = styled(FiMoreVertical)`
     cursor: pointer;
@@ -386,12 +406,18 @@ function ColumnPage() {
   `;
 
   const DatePickerStyle = styled(DatePicker)`
-    width: 100%; // Full width by default
-    max-width: 330px; // Set a maximum width for the date picker input
-    margin-bottom: 10px;
+    width: 100%; // DatePicker의 너비를 부모 요소에 맞춥니다.
     padding: 10px;
     border: 1px solid #ddd;
+    margin-left: 60px; // 왼쪽 여백을 없앱니다.
+    width: 320px !important;
     border-radius: 5px;
+    box-sizing: border-box; // 너비 계산에 테두리와 패딩을 포함합니다.
+    .react-datepicker-wrapper,
+    .react-datepicker__input-container {
+      width: 100%; // 내부 요소의 너비를 100%로 설정합니다.
+    }
+    // 기본 react-datepicker 스타일을 재정의할 필요가 있을 수 있습니다.
   `;
 
   const handleSubmit = async (e) => {
@@ -434,12 +460,18 @@ function ColumnPage() {
       alert('Error saving card');
     }
   };
-
-
   function formatDate(date) {
     const options = { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' };
     return new Date(date).toLocaleString('ko-KR', options);
   }
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
+  const handleModalContentClick = (e) => {
+    e.stopPropagation();
+  };
 
   function formatDateRange(startTime, endTime) {
     const start = new Date(startTime);
@@ -452,7 +484,7 @@ function ColumnPage() {
   return (
     <Container>
       <Header>
-        <Greeting>{columnTitle || 'Loading...'}</Greeting>
+        <Greeting style={{ fontWeight: 'bold', fontSize: '50px', }}>{columnTitle || 'Loading...'}</Greeting>
         <Icon type="Plus" onClick={toggleModal} />
       </Header>
       <CardListStyle>
@@ -463,8 +495,7 @@ function ColumnPage() {
             bgColor={colors[card.cardColor % colors.length]} // cardColor를 사용하여 배경색 설정
           >
             <div className="card-writer"></div>
-            <strong>카드 ID: {card.cardId}</strong>
-            <p>카드 제목: {card.cardTitle}</p>
+            <p style={{ fontWeight: 'bold', fontSize: '20px' }}>카드 제목: {card.cardTitle}</p>
             <p>카드 내용: {card.cardContent}</p>
             <p>기간: {formatDateRange(card.cardStartTime, card.cardEndTime)}</p>
             <p>상태: {card.cardStatus === 'IN_PROGRESS' ? '진행 중' : card.cardStatus === 'COMPLETED' ? '완료됨' : '취소됨'}</p>
@@ -498,44 +529,46 @@ function ColumnPage() {
         ))}
       </CardListStyle>
       {showModal && (
-        <Modal>
-          <ModalContent>
-            <CloseButton onClick={toggleModal}>Close</CloseButton>
-            <h2>Edit Card</h2>
+        <Modal onClick={handleCloseModal}>
+          <ModalContent onClick={handleModalContentClick}>
+            {/* <h2>Edit Card</h2> */}
             <Form onSubmit={handleSubmit}>
-              <FormLabel htmlFor="cardTitle">Card Title:</FormLabel>
+              <FormLabel htmlFor="cardTitle"></FormLabel>
               <FormInput
                 type="text"
                 id="cardTitle"
                 name="cardTitle"
                 value={cardData.cardTitle}
                 onChange={handleChange}
-                style={{ width: '70%' }} // Add inline style for debugging
+                style={{ width: '70%' }}
+                placeholder="카드 제목을 입력하세요" // Add inline style for debugging
               />
-              <FormLabel htmlFor="cardContent">Card Content:</FormLabel>
-              <FormInput type="text" id="cardContent" name="cardContent" value={cardData.cardContent} onChange={handleChange} style={{ width: '70%' }} />
+              <FormLabel htmlFor="cardContent"></FormLabel>
+              <FormInput type="text" id="cardContent" name="cardContent" value={cardData.cardContent} onChange={handleChange} style={{ width: '70%' }} placeholder="카드 내용을 입력하세요" />
               <TimeContainer>
-                <FormLabel htmlFor="startTime">Start Time:</FormLabel>
+                <FormLabel htmlFor="startTime"></FormLabel>
                 <DatePickerStyle selected={cardData.cardStartTime} onChange={handleStartDateChange} showTimeSelect dateFormat="Pp" />
 
-                <FormLabel htmlFor="endTime">End Time:</FormLabel>
+                <FormLabel htmlFor="endTime"></FormLabel>
                 <DatePickerStyle selected={cardData.cardEndTime} onChange={handleEndDateChange} showTimeSelect dateFormat="Pp" />
               </TimeContainer>
 
-              <FormLabel htmlFor="cardStatus">Card Status:</FormLabel>
-              <select
+              <FormLabel htmlFor="cardStatus"></FormLabel>
+              <SelectStyle
                 id="cardStatus"
                 name="cardStatus"
                 value={cardData.cardStatus}
                 onChange={handleChange}
-                style={{ width: '70%', padding: '10px', borderRadius: '5px', border: '1px solid #ddd', marginBottom: '20px', marginLeft: '50px' }}
+                style={{ width: '70%', padding: '10px', borderRadius: '5px', border: '1px solid #ddd', marginBottom: '20px', marginLeft: '60px' }}
               >
                 <option value="IN_PROGRESS">IN_PROGRESS</option>
                 <option value="COMPLETED">OMPLETED</option>
                 <option value="CANCELED">CANCELED</option>
-              </select>
+              </SelectStyle>
 
-              <SubmitButton type="submit">Save Changes</SubmitButton>
+              <SubmitButton className="btn btn-success" type="submit" style={{ width: '73%', marginLeft: '55px' }}>
+                저장
+              </SubmitButton>
             </Form>
           </ModalContent>
         </Modal>
