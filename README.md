@@ -173,9 +173,9 @@ createBoard = async (boardData, id) => {
   await this.boardRepository.createBoard(newBoardData);
   return '보드가 생성됐습니다.';
 };
+```
 <ul>
 기존에는 id를 객체로 받아 id가 undefined 되어 있었지만 이를 string id로 받게 함
 </ul>
   </div>
 </details>
-```
