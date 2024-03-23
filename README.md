@@ -17,24 +17,24 @@
     <td><strong>링크</strong></td>
   </tr>
   <tr align="center">
-    <td>배포 사이트</td>
-    <td><a target="_blank" rel="noopener noreferrer nofollow" href="https://www.nodejstrello.site/">https://www.nodejstrello.site/</a></td>
+    <td><img src="https://github.com/jovid18/project_trello_backend/assets/143411145/0b7f433b-19ad-413c-8242-cb650ff064f2" alt="트렐로 아이콘" style="width: 25px;"></td>
+    <td><a target="_blank" rel="noopener noreferrer nofollow" href="https://www.nodejstrello.site/">트렐로</a></td>
   </tr>
   <tr align="center">
-    <td>Frontend Github</td>
-    <td><a target="_blank" rel="noopener noreferrer nofollow" href="https://github.com/norwegianwood97/project_trello_frontend">https://github.com/norwegianwood97/project_trello_frontend</a></td>
+    <td><img src="https://user-images.githubusercontent.com/389021/165723723-c93929a5-01d9-49e1-907b-43669d8089e6.png" alt="리액트 아이콘" style="width: 25px;"></td>
+    <td><a target="_blank" rel="noopener noreferrer nofollow" href="https://github.com/norwegianwood97/project_trello_frontend">FE Github</a></td>
   </tr>
   <tr align="center">
-    <td>Backend Github</td>
-    <td><a target="_blank" rel="noopener noreferrer nofollow" href="https://github.com/jovid18/project_trello_backend">https://github.com/jovid18/project_trello_backend</td>
+    <td><img src="https://static-00.iconduck.com/assets.00/node-js-icon-454x512-nztofx17.png" alt="노드js 아이콘" style="width: 20px;"></td>
+    <td><a target="_blank" rel="noopener noreferrer nofollow" href="https://github.com/jovid18/project_trello_backend">BE Github</td>
   </tr>
   <tr align="center">
-    <td>공개 Notion</td>
-    <td><a target="_blank" rel="noopener noreferrer nofollow" href="https://polished-shrew-581.notion.site/Trello-6db8c49d3b9e45a790fc17439d8b6d7e">https://polished-shrew-581.notion.site/Trello-6db8c49d3b9e45a790fc17439d8b6d7e</a></td>
+    <td><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Notion-logo.svg/1024px-Notion-logo.svg.png" alt="노션 아이콘" style="width: 20px;"></td>
+    <td><a target="_blank" rel="noopener noreferrer nofollow" href="https://polished-shrew-581.notion.site/Trello-6db8c49d3b9e45a790fc17439d8b6d7e">브로슈어</a></td>
   </tr>
   <tr align="center">
-    <td>팀 Notion</td>
-    <td><a target="_blank" rel="noopener noreferrer nofollow" href="https://maroon-yttrium-a81.notion.site/Trello-S-A-615eed4f4cd64174b58905f67efb2f99">https://maroon-yttrium-a81.notion.site/Trello-S-A-615eed4f4cd64174b58905f67efb2f99</a></td>
+    <td><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Notion-logo.svg/1024px-Notion-logo.svg.png" alt="노션 아이콘" style="width: 20px;"></td>
+    <td><a target="_blank" rel="noopener noreferrer nofollow" href="https://maroon-yttrium-a81.notion.site/Trello-S-A-615eed4f4cd64174b58905f67efb2f99">팀 S.A</a></td>
   </tr>
 </table>
 
